@@ -13,7 +13,8 @@ $ftpHost   = "193.203.181.201"
 $ftpPort   = 21
 $ftpUser   = "u446706325.dev.corporetraininggym.com.br"
 $ftpPass   = "p2I2i+mpUn:/PPR;"
-$ftpRoot   = "public_html"
+# Nota: a raiz FTP ja aponta para public_html — nao incluir no caminho
+$ftpRoot   = ""
 
 function Upload-File {
     param(
@@ -22,7 +23,7 @@ function Upload-File {
     )
 
     $fileName  = Split-Path $localFile -Leaf
-    $remoteUrl = "ftp://${ftpHost}:${ftpPort}/${remotePath}/${fileName}"
+    $remoteUrl = if ($remotePath) { "ftp://${ftpHost}:${ftpPort}/${remotePath}/${fileName}" } else { "ftp://${ftpHost}:${ftpPort}/${fileName}" }
 
     Write-Host "Enviando: $fileName -> $remoteUrl" -ForegroundColor Cyan
 
@@ -50,8 +51,8 @@ function Upload-File {
     }
 }
 
-# Monta o caminho remoto
-$remoteFolder = if ($RemoteSubFolder) { "$ftpRoot/$RemoteSubFolder" } else { $ftpRoot }
+# Monta o caminho remoto (raiz FTP = public_html; subpasta opcional)
+$remoteFolder = if ($RemoteSubFolder) { $RemoteSubFolder } else { "" }
 
 # Upload de arquivo único
 if ($FilePath) {
