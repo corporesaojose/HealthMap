@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "corpore-health-map",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3000", "C:\\Users\\user\\Desktop\\Claude\\corpore-health-map"],
+      "port": 3000
+    }
+  ]
+}

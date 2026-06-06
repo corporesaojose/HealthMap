@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/user/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/3221b5bf-8025-4a58-a85a-9313ce553604/5512e8ae-5c51-4aa4-bc7e-c17ab808f0ef/skills/docx/**)",
+      "Bash(python scripts/office/extract-text.py \"C:\\\\Users\\\\user\\\\Downloads\\\\Landing_Page_Corpore_Health_Map \\(1\\).docx\")",
+      "Bash(pandoc \"C:\\\\Users\\\\user\\\\Downloads\\\\Landing_Page_Corpore_Health_Map \\(1\\).docx\" -t markdown)",
+      "Bash(where node *)",
+      "Bash(where python *)",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(Get-Command node, npx, python, python3, php -ErrorAction SilentlyContinue)"
+    ]
+  }
+}

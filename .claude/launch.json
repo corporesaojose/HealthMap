@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "corpore-health-map",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["serve", "--port", "3000", "--root", "corpore-health-map"],
+      "port": 3000
+    }
+  ]
+}
