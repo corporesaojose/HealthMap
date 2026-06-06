@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corpore Training Gym</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,160,60,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      color: #c8a03c;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h1 span { color: #c8a03c; }
+
+    .hero p {
+      margin-top: 1.5rem;
+      font-size: 1.15rem;
+      color: #aaa;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .cta-group {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: #c8a03c;
+      color: #0a0a0a;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #e0b84a; }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border: 2px solid #444;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: #c8a03c; color: #c8a03c; }
+
+    /* BENEFÍCIOS */
+    .benefits {
+      background: #111;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .benefits h2 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+    }
+
+    .benefits h2 span { color: #c8a03c; }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      flex: 1 1 220px;
+      max-width: 240px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover { border-color: #c8a03c; transform: translateY(-4px); }
+
+    .card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    .card h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      color: #c8a03c;
+    }
+
+    .card p { font-size: 0.9rem; color: #888; line-height: 1.6; }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: linear-gradient(135deg, #c8a03c, #a07828);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #0a0a0a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(0,0,0,0.6);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-dark {
+      background: #0a0a0a;
+      color: #c8a03c;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-dark:hover { background: #1a1a1a; }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 2rem;
+      color: #444;
+      font-size: 0.85rem;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    footer span { color: #c8a03c; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo">Corpore Training Gym</div>
+    <h1>Forje o seu<br><span>melhor corpo</span></h1>
+    <p>Estrutura completa, instrutores especializados e uma comunidade que te impulsiona a ir além dos seus limites.</p>
+    <div class="cta-group">
+      <a href="#contato" class="btn-primary">Quero começar agora</a>
+      <a href="#beneficios" class="btn-outline">Conheça a academia</a>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits" id="beneficios">
+    <h2>Por que a <span>Corpore?</span></h2>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🏋️</div>
+        <h3>Equipamentos</h3>
+        <p>Aparelhos modernos e área de peso livre completa para todos os níveis.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👨‍🏫</div>
+        <h3>Instrutores</h3>
+        <p>Profissionais certificados com acompanhamento personalizado no seu treino.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>Flexibilidade</h3>
+        <p>Horários amplos para você treinar no seu ritmo, sem desculpas.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔥</div>
+        <h3>Resultados</h3>
+        <p>Metodologia focada em evolução real e resultados visíveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section" id="contato">
+    <h2>Comece hoje mesmo</h2>
+    <p>Primeira semana gratuita. Sem compromisso.</p>
+    <a href="https://wa.me/5511999999999" class="btn-dark">Falar no WhatsApp</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <span>Corpore Training Gym</span>. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
