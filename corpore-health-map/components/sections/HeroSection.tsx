@@ -109,7 +109,7 @@ export default function HeroSection() {
 
               {/* Badge meio — centralizado na altura da imagem */}
               <div
-                className="absolute -left-6 top-1/2 -translate-y-1/2 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
+                className="absolute -left-6 bottom-0 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
                 style={badgeStyle}
               >
                 <span style={{ color: "#D7E94A" }}>✦</span>
