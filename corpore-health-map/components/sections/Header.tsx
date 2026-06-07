@@ -29,8 +29,8 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
 
-        {/* Logo: branco no hero escuro, preto após scroll */}
-        <a href="#hero" aria-label="Corpore Health Map — Início">
+        {/* Logo + HEALTH MAP label */}
+        <a href="#hero" aria-label="Corpore Health Map — Início" className="flex items-center gap-3">
           <Image
             src={scrolled ? "/logo-preto.png" : "/logo-branco.png"}
             alt="Corpore — Avaliação de saúde online gratuita"
@@ -39,6 +39,16 @@ export default function Header() {
             className="h-9 w-auto object-contain"
             priority
           />
+          <span
+            className="hidden sm:block text-xs font-bold uppercase tracking-widest leading-none border-l pl-3"
+            style={{
+              color: scrolled ? "#2F6F6E" : "rgba(215,233,74,0.85)",
+              borderColor: scrolled ? "rgba(47,111,110,0.3)" : "rgba(215,233,74,0.25)",
+              letterSpacing: "0.14em",
+            }}
+          >
+            Health Map
+          </span>
         </a>
 
         {/* Desktop nav */}

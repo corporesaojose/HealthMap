@@ -14,11 +14,14 @@ export default function HeroSection() {
   }, []);
 
   const pillars = ["Sono", "Energia", "Estresse", "Alimentação", "Dores", "Pilares da saúde"];
-  const trustCards = [
-    { icon: "🔬", text: "Avaliação baseada em ciência" },
-    { icon: "⚡", text: "Resultado rápido e personalizado" },
-    { icon: "🔒", text: "Privacidade e segurança dos dados" },
-  ];
+
+  const badgeStyle = {
+    background: "rgba(255,255,255,0.12)",
+    backdropFilter: "blur(12px)",
+    border: "1px solid rgba(255,255,255,0.18)",
+    borderRadius: "14px",
+    color: "#fff",
+  };
 
   return (
     <section
@@ -36,15 +39,6 @@ export default function HeroSection() {
 
           {/* Left: text */}
           <div className="flex flex-col gap-6">
-            <div className="reveal">
-              <span
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "rgba(215,233,74,0.8)", letterSpacing: "0.16em" }}
-              >
-                CORPORE HEALTH MAP
-              </span>
-            </div>
-
             <h1
               id="hero-title"
               className="reveal font-sora font-bold text-white leading-tight"
@@ -104,54 +98,25 @@ export default function HeroSection() {
                 className="w-auto max-h-[580px] object-contain animate-float"
               />
 
-              {/* Floating badge top */}
+              {/* Badge topo */}
               <div
                 className="absolute -top-3 -right-4 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  borderRadius: "14px",
-                  color: "#fff",
-                }}
+                style={badgeStyle}
               >
                 <span style={{ color: "#D7E94A" }}>✦</span>
-                Baseado em ciência
+                Baseado em ciência e experiência prática
               </div>
 
-              {/* Floating badge bottom */}
+              {/* Badge meio — centralizado na altura da imagem */}
               <div
-                className="absolute -bottom-3 -left-4 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
-                style={{
-                  background: "rgba(255,255,255,0.12)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  borderRadius: "14px",
-                  color: "#fff",
-                }}
+                className="absolute -left-6 top-1/2 -translate-y-1/2 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
+                style={badgeStyle}
               >
-                <span>🎯</span>
-                100% gratuito
+                <span style={{ color: "#D7E94A" }}>✦</span>
+                Resultado rápido e personalizado
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Trust strip */}
-        <div className="reveal mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {trustCards.map((c) => (
-            <div
-              key={c.text}
-              className="flex items-center gap-3 px-4 py-3 rounded-2xl"
-              style={{
-                background: "rgba(255,255,255,0.07)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
-            >
-              <span className="text-2xl">{c.icon}</span>
-              <span className="text-sm font-semibold text-white/80">{c.text}</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>
