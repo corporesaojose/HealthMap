@@ -32,6 +32,24 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    // Cores de fundo usadas dinamicamente em arrays (ProblemSection, ProfilesSection)
+    "bg-blue-clinical",
+    "bg-lavender-soft",
+    "bg-sand-light",
+    "bg-peach-soft",
+    "bg-mistgray",
+    // Texto e bordas dinâmicas
+    "text-petroleum",
+    "text-teal",
+    "text-sage",
+    "text-lime",
+    "border-teal",
+    "border-mistgray",
+    // Utilitários usados com interpolação
+    "bg-offwhite",
+    "bg-petroleum",
+  ],
   plugins: [],
 };
 
