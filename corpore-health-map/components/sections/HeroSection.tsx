@@ -94,17 +94,15 @@ export default function HeroSection() {
 
           {/* Right: real app image */}
           <div className="reveal flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              <div className="relative drop-shadow-2xl">
-                <Image
-                  src="/avaliacao-saude-online-corpore-health-map.png"
-                  alt="Prévia do Corpore Health Map exibindo o Health Score e os pilares de saúde — avaliação de saúde online gratuita"
-                  width={320}
-                  height={620}
-                  priority
-                  className="w-auto max-h-[580px] object-contain"
-                />
-              </div>
+            <div className="relative">
+              <Image
+                src="/avaliacao-saude-online-corpore-health-map.png"
+                alt="Prévia do Corpore Health Map exibindo o Health Score e os pilares de saúde — avaliação de saúde online gratuita"
+                width={320}
+                height={620}
+                priority
+                className="w-auto max-h-[580px] object-contain animate-float"
+              />
 
               {/* Floating badge top */}
               <div
