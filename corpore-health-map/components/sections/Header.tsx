@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-import Logo from "@/components/ui/Logo";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
+    const handler = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -22,12 +22,23 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 shadow-sm backdrop-blur-md" : "bg-transparent"
+        scrolled
+          ? "bg-white/95 shadow-sm backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
-        <a href="#hero" aria-label="Corpore Health Map - Início">
-          <Logo />
+
+        {/* Logo: branco no hero escuro, preto após scroll */}
+        <a href="#hero" aria-label="Corpore Health Map — Início">
+          <Image
+            src={scrolled ? "/logo-preto.png" : "/logo-branco.png"}
+            alt="Corpore — Avaliação de saúde online gratuita"
+            width={120}
+            height={40}
+            className="h-9 w-auto object-contain"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
@@ -36,12 +47,25 @@ export default function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-semibold text-petroleum hover:text-teal transition-colors"
+              className={`text-sm font-semibold transition-colors ${
+                scrolled
+                  ? "text-petroleum hover:text-teal"
+                  : "text-white/85 hover:text-white"
+              }`}
             >
               {l.label}
             </a>
           ))}
-          <a href="#cta-final" className="btn-primary text-sm py-3 px-6">
+          {/* Botão lima */}
+          <a
+            href="#cta-final"
+            className="font-sora font-bold text-sm rounded-full px-6 py-3 transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              background: "#D7E94A",
+              color: "#0D2B2B",
+              boxShadow: "0 8px 24px rgba(215,233,74,0.3)",
+            }}
+          >
             Fazer meu Health Map
           </a>
         </nav>
@@ -53,20 +77,20 @@ export default function Header() {
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
-          <span className={`block w-6 h-0.5 bg-petroleum transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-petroleum transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-petroleum transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-petroleum" : "bg-white"} ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-petroleum" : "bg-white"} ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 transition-all duration-300 ${scrolled ? "bg-petroleum" : "bg-white"} ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
-      <div className={`mobile-menu md:hidden bg-white/95 backdrop-blur-md border-t border-mistgray ${open ? "open" : ""}`}>
+      <div className={`mobile-menu md:hidden bg-petroleum/95 backdrop-blur-md border-t border-white/10 ${open ? "open" : ""}`}>
         <nav className="flex flex-col px-5 py-4 gap-4" aria-label="Menu mobile">
           {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-base font-semibold text-petroleum hover:text-teal transition-colors py-1"
+              className="text-base font-semibold text-white/85 hover:text-white transition-colors py-1"
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -74,7 +98,8 @@ export default function Header() {
           ))}
           <a
             href="#cta-final"
-            className="btn-primary text-center mt-2"
+            className="font-sora font-bold text-center rounded-full py-3 px-6 mt-2"
+            style={{ background: "#D7E94A", color: "#0D2B2B" }}
             onClick={() => setOpen(false)}
           >
             Fazer meu Health Map

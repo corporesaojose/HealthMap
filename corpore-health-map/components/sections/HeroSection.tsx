@@ -28,7 +28,7 @@ export default function HeroSection() {
       className="min-h-screen pt-24 pb-16 px-5 flex flex-col justify-center"
       style={{
         background:
-          "radial-gradient(circle at top right, rgba(215,233,74,0.18), transparent 35%), linear-gradient(135deg, #F7F8F6 0%, #EAF1EE 100%)",
+          "radial-gradient(circle at top right, rgba(47,111,110,0.4), transparent 50%), linear-gradient(160deg, #0D2B2B 0%, #0f3333 60%, #164646 100%)",
       }}
     >
       <div className="max-w-6xl mx-auto w-full">
@@ -37,19 +37,24 @@ export default function HeroSection() {
           {/* Left: text */}
           <div className="flex flex-col gap-6">
             <div className="reveal">
-              <span className="section-label">AVALIAÇÃO DE SAÚDE ONLINE GRATUITA</span>
+              <span
+                className="text-xs font-bold uppercase tracking-widest"
+                style={{ color: "rgba(215,233,74,0.8)", letterSpacing: "0.16em" }}
+              >
+                CORPORE HEALTH MAP
+              </span>
             </div>
 
             <h1
               id="hero-title"
-              className="reveal font-sora font-bold text-petroleum leading-tight"
+              className="reveal font-sora font-bold text-white leading-tight"
               style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}
             >
               Seu corpo pode estar pedindo ajuda… mesmo que você ainda consiga{" "}
-              <span style={{ color: "#8a9a20" }}>"dar conta"</span>
+              <span style={{ color: "#D7E94A" }}>"dar conta"</span>
             </h1>
 
-            <p className="reveal text-petroleum/75 text-lg leading-relaxed max-w-lg">
+            <p className="reveal text-white/70 text-lg leading-relaxed max-w-lg">
               Faça uma avaliação de saúde online gratuita e descubra como estão seu sono, energia,
               estresse, alimentação, dores e os principais pilares do seu estilo de vida.
             </p>
@@ -58,7 +63,8 @@ export default function HeroSection() {
               {pillars.map((p) => (
                 <li
                   key={p}
-                  className="flex items-center gap-1.5 text-sm font-semibold text-petroleum bg-white/70 border border-mistgray rounded-full px-3 py-1.5"
+                  className="flex items-center gap-1.5 text-sm font-semibold text-white/85 rounded-full px-3 py-1.5"
+                  style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#D7E94A" }} />
                   {p}
@@ -69,12 +75,18 @@ export default function HeroSection() {
             <div className="reveal flex flex-col gap-3">
               <button
                 type="button"
-                className="btn-primary self-start animate-pulse-lime"
+                className="self-start font-sora font-bold rounded-full text-base transition-all duration-200 hover:-translate-y-1"
+                style={{
+                  background: "#D7E94A",
+                  color: "#0D2B2B",
+                  padding: "16px 28px",
+                  boxShadow: "0 12px 32px rgba(215,233,74,0.35)",
+                }}
                 aria-label="Fazer minha avaliação de saúde gratuitamente"
               >
                 Fazer meu Health Map gratuitamente
               </button>
-              <p className="text-xs text-sage font-semibold tracking-wide">
+              <p className="text-xs font-semibold tracking-wide" style={{ color: "rgba(255,255,255,0.45)" }}>
                 Avaliação gratuita &nbsp;•&nbsp; 100% online &nbsp;•&nbsp; Resultado personalizado
               </p>
             </div>
@@ -83,8 +95,6 @@ export default function HeroSection() {
           {/* Right: real app image */}
           <div className="reveal flex justify-center lg:justify-end">
             <div className="relative animate-float">
-
-              {/* Main phone image */}
               <div className="relative drop-shadow-2xl">
                 <Image
                   src="/avaliacao-saude-online-corpore-health-map.png"
@@ -98,17 +108,29 @@ export default function HeroSection() {
 
               {/* Floating badge top */}
               <div
-                className="absolute -top-3 -right-4 card-glass px-3 py-2 text-xs font-semibold text-petroleum flex items-center gap-1.5 shadow-lg"
-                style={{ borderRadius: "14px" }}
+                className="absolute -top-3 -right-4 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  borderRadius: "14px",
+                  color: "#fff",
+                }}
               >
-                <span style={{ color: "#D7E94A", fontSize: "16px" }}>✦</span>
+                <span style={{ color: "#D7E94A" }}>✦</span>
                 Baseado em ciência
               </div>
 
               {/* Floating badge bottom */}
               <div
-                className="absolute -bottom-3 -left-4 card-glass px-3 py-2 text-xs font-semibold text-petroleum flex items-center gap-1.5 shadow-lg"
-                style={{ borderRadius: "14px" }}
+                className="absolute -bottom-3 -left-4 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255,255,255,0.18)",
+                  borderRadius: "14px",
+                  color: "#fff",
+                }}
               >
                 <span>🎯</span>
                 100% gratuito
@@ -122,10 +144,14 @@ export default function HeroSection() {
           {trustCards.map((c) => (
             <div
               key={c.text}
-              className="card-glass flex items-center gap-3 px-4 py-3"
+              className="flex items-center gap-3 px-4 py-3 rounded-2xl"
+              style={{
+                background: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
             >
               <span className="text-2xl">{c.icon}</span>
-              <span className="text-sm font-semibold text-petroleum">{c.text}</span>
+              <span className="text-sm font-semibold text-white/80">{c.text}</span>
             </div>
           ))}
         </div>
