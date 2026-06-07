@@ -7,7 +7,20 @@
       "Bash(where node *)",
       "Bash(where python *)",
       "mcp__Claude_Preview__preview_start",
-      "PowerShell(Get-Command node, npx, python, python3, php -ErrorAction SilentlyContinue)"
+      "PowerShell(Get-Command node, npx, python, python3, php -ErrorAction SilentlyContinue)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\user\\\\Desktop\\\\Claude\\\\.git\\\\index.lock\" -Force)",
+      "PowerShell(& \"C:\\\\Users\\\\user\\\\Desktop\\\\Claude\\\\ftp_upload.ps1\" -FilePath \"C:\\\\Users\\\\user\\\\Desktop\\\\Claude\\\\fernando.txt\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(Get-Command node)",
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-user-services-reader",
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-project-services-reader",
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-team-services-reader",
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-project-services-updater",
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-deploy-services-updater"
     ]
   }
 }
