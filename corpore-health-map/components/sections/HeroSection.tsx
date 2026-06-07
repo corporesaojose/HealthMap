@@ -32,7 +32,7 @@ export default function HeroSection() {
       }}
     >
       <div className="max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:items-start">
 
           {/* Left: text */}
           <div className="flex flex-col gap-6">
