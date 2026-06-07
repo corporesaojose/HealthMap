@@ -13,7 +13,14 @@ export default function HeroSection() {
     }
   }, []);
 
-  const pillars = ["Sono", "Energia", "Estresse", "Alimentação", "Dores", "Pilares da saúde"];
+  const pillars = [
+    "Alimentação Saudável",
+    "Atividade Física",
+    "Gestão do Estresse",
+    "Sono Reparador",
+    "Conexões Sociais",
+    "Controle de Substâncias",
+  ];
 
   const badgeStyle = {
     background: "rgba(255,255,255,0.12)",
@@ -48,10 +55,16 @@ export default function HeroSection() {
               <span style={{ color: "#D7E94A" }}>"dar conta"</span>
             </h1>
 
-            <p className="reveal text-white/70 text-lg leading-relaxed max-w-lg">
-              Faça uma avaliação de saúde online gratuita e descubra como estão seu sono, energia,
-              estresse, alimentação, dores e os principais pilares do seu estilo de vida.
-            </p>
+            <div className="reveal flex flex-col gap-3 max-w-lg">
+              <p className="text-white/85 text-lg leading-relaxed font-semibold">
+                Descubra agora o que pode estar afetando sua energia, disposição e qualidade de vida.
+              </p>
+              <p className="text-white/60 text-base leading-relaxed">
+                Receba gratuitamente um mapa personalizado da sua saúde, desenvolvido por médicos
+                especialistas em Medicina do Estilo de Vida, com análise dos principais pilares
+                que influenciam sua saúde e longevidade:
+              </p>
+            </div>
 
             <ul className="reveal flex flex-wrap gap-2" aria-label="Pilares avaliados">
               {pillars.map((p) => (
