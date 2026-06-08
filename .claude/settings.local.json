@@ -20,7 +20,17 @@
       "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-project-services-reader",
       "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-team-services-reader",
       "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-project-services-updater",
-      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-deploy-services-updater"
+      "mcp__42b27bfc-72ee-4343-821b-bb656e308ba3__netlify-deploy-services-updater",
+      "Bash(ls C:/Users/user/Downloads/ | head -20)",
+      "Bash(ls C:/Users/user/Desktop/ | grep -i png | head -20)",
+      "Bash(cd /c/Users/user/Desktop/Claude/corpore-health-map && ls -la)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(netlify status *)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(npx netlify-cli *)",
+      "Bash(start chrome *)"
     ]
   }
 }

@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "corpore-health-map",
-      "runtimeExecutable": "dotnet",
-      "runtimeArgs": ["serve", "--port", "3000", "--root", "corpore-health-map"],
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\user\\Desktop\\Claude\\corpore-health-map && npm run dev"],
       "port": 3000
     }
   ]
