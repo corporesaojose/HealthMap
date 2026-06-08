@@ -4,7 +4,8 @@
     {
       "name": "corpore-health-map",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3000", "C:\\Users\\user\\Desktop\\Claude\\corpore-health-map"],
+      "runtimeArgs": ["next", "dev", "--port", "3000", "--hostname", "localhost"],
+      "cwd": "C:\\Users\\user\\Desktop\\Claude\\corpore-health-map",
       "port": 3000
     }
   ]
