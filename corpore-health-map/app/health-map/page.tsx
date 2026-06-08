@@ -33,10 +33,9 @@ export default function HealthMapPage() {
   // Computed radar slices for completed pillars
   const completedPillarScores = PILLARS.map((p, i) => {
     const answers = formState.pillarAnswers[i]
-    if (!answers || answers.length === 0) return { ...p, score: 0 }
-    const avg = Math.round(answers.reduce((s, a) => s + a.score, 0) / answers.length)
-    return { ...p, score: avg }
-  }).filter((_, i) => formState.pillarAnswers[i]?.length > 0)
+    const avg = answers?.length ? Math.round(answers.reduce((s, a) => s + a.score, 0) / answers.length) : 0
+    return { name: p.name, displayName: p.displayName, emoji: p.emoji, color: p.radarColor, weight: p.weight, score: avg }
+  }).filter((_, i) => (formState.pillarAnswers[i]?.length ?? 0) > 0)
 
   function goToStep(s: Step) {
     setStep(s)
@@ -104,10 +103,8 @@ export default function HealthMapPage() {
   // Get current pillar scores for radar display
   const allPillarScores = PILLARS.map((p, i) => {
     const answers = formState.pillarAnswers[i]
-    const score = answers?.length
-      ? Math.round(answers.reduce((s, a) => s + a.score, 0) / answers.length)
-      : 0
-    return { ...p, score }
+    const score = answers?.length ? Math.round(answers.reduce((s, a) => s + a.score, 0) / answers.length) : 0
+    return { name: p.name, displayName: p.displayName, emoji: p.emoji, color: p.radarColor, weight: p.weight, score }
   })
 
   // Determine IPM step type from current step

@@ -55,7 +55,7 @@ export default function PillarFeedback({ pillar, pillarScore, completedPillarSco
 
   const radarSlices = PILLARS.map(p => {
     const completed = completedPillarScores.find(c => c.name === p.name)
-    return completed ?? { ...p, score: 0 }
+    return completed ?? { name: p.name, displayName: p.displayName, emoji: p.emoji, color: p.radarColor, weight: p.weight, score: 0 }
   })
 
   const nextLabel = isLastPillar

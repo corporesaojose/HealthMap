@@ -60,8 +60,9 @@ export default function PillarScreen({ pillar, pillarIndex, completedPillarScore
   const radarSlices = PILLARS.map((p, i) => {
     const completed = completedPillarScores.find(c => c.name === p.name)
     if (completed) return completed
-    if (i === pillarIndex) return { ...p, score: 10 } // dim indicator
-    return { ...p, score: 0 }
+    const base = { name: p.name, displayName: p.displayName, emoji: p.emoji, color: p.radarColor, weight: p.weight }
+    if (i === pillarIndex) return { ...base, score: 10 }
+    return { ...base, score: 0 }
   })
 
   return (
