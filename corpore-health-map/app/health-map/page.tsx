@@ -11,6 +11,7 @@ import PillarScreen from '@/components/health-map/PillarScreen'
 import PillarFeedback from '@/components/health-map/PillarFeedback'
 import AnalyzingScreen from '@/components/health-map/AnalyzingScreen'
 import IpmScreen from '@/components/health-map/IpmScreen'
+import RegistrationScreen from '@/components/health-map/RegistrationScreen'
 import ResultScreen from '@/components/health-map/ResultScreen'
 import type { QuestionAnswer } from '@/lib/health-map/types'
 import type { HealthMapResult } from '@/lib/health-map/types'
@@ -19,6 +20,7 @@ const INITIAL_STATE: FormState = {
   personal: { sex: null, age: '', weight: '', height: '' },
   pillarAnswers: {},
   ipm: {},
+  registration: { name: '', phone: '', email: '', neighborhood: '', activityLevel: null },
 }
 
 type IpmStepType = 'readiness' | 'obstacle' | 'confidence' | 'future_mental'
@@ -93,6 +95,10 @@ export default function HealthMapPage() {
   function handleCalculatingDone() {
     const res = calculateResult(formState)
     setResult(res)
+    goToStep({ type: 'registration' })
+  }
+
+  function handleRegistrationNext() {
     goToStep({ type: 'result' })
   }
 
@@ -175,6 +181,14 @@ export default function HealthMapPage() {
           pillarScores={allPillarScores}
           onDone={handleCalculatingDone}
           isCalculating
+        />
+      )}
+
+      {step.type === 'registration' && (
+        <RegistrationScreen
+          data={formState.registration}
+          onChange={registration => setFormState(fs => ({ ...fs, registration }))}
+          onNext={handleRegistrationNext}
         />
       )}
 

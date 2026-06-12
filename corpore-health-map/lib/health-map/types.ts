@@ -7,6 +7,21 @@ export interface PersonalData {
   height: string
 }
 
+export type ActivityLevel =
+  | 'sedentario'
+  | 'caminhada_corrida'
+  | 'esportes'
+  | 'academia'
+  | 'pilates_crossfit_spinning_bootcamp'
+
+export interface RegistrationData {
+  name: string
+  phone: string
+  email: string
+  neighborhood: string
+  activityLevel: ActivityLevel | null
+}
+
 export interface QuestionAnswer {
   questionIndex: number
   optionIndex: number
@@ -29,6 +44,7 @@ export interface FormState {
   personal: PersonalData
   pillarAnswers: PillarAnswers
   ipm: Partial<IpmAnswers>
+  registration: RegistrationData
 }
 
 export interface PillarScore {
@@ -76,6 +92,7 @@ export type StepType =
   | 'ipm_confidence'
   | 'ipm_future'
   | 'calculating'
+  | 'registration'
   | 'result'
 
 export interface Step {
