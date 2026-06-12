@@ -193,7 +193,7 @@ export default function HealthMapPage() {
       )}
 
       {step.type === 'result' && result && (
-        <ResultScreen result={result} />
+        <ResultScreen result={result} firstName={formState.registration.name.trim().split(' ')[0] || ''} />
       )}
     </>
   )

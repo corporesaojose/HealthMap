@@ -6,6 +6,7 @@ import RadarChart from './RadarChart'
 
 interface ResultScreenProps {
   result: HealthMapResult
+  firstName?: string
 }
 
 function AnimatedScore({ target, duration = 1800 }: { target: number; duration?: number }) {
@@ -82,7 +83,7 @@ function ScoreRing({ score, size = 160 }: { score: number; size?: number }) {
   )
 }
 
-export default function ResultScreen({ result }: ResultScreenProps) {
+export default function ResultScreen({ result, firstName }: ResultScreenProps) {
   const [section, setSection] = useState(0)
   const [visible, setVisible] = useState(false)
 
@@ -132,7 +133,7 @@ export default function ResultScreen({ result }: ResultScreenProps) {
             className="mt-2 font-sora font-bold text-white"
             style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', letterSpacing: '-0.02em' }}
           >
-            Seu Resultado Está Pronto
+            {firstName ? `${firstName}, seu resultado está pronto` : 'Seu Resultado Está Pronto'}
           </h1>
         </div>
 
