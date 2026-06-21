@@ -68,7 +68,7 @@ export default function Header() {
           ))}
           {/* Botão lima */}
           <a
-            href="#cta-final"
+            href="https://corpore-health-map.netlify.app/health-map"
             className="font-sora font-bold text-sm rounded-full px-6 py-3 transition-all duration-200 hover:-translate-y-0.5"
             style={{
               background: "#D7E94A",
@@ -107,7 +107,7 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#cta-final"
+            href="https://corpore-health-map.netlify.app/health-map"
             className="font-sora font-bold text-center rounded-full py-3 px-6 mt-2"
             style={{ background: "#D7E94A", color: "#0D2B2B" }}
             onClick={() => setOpen(false)}

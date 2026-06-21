@@ -60,9 +60,9 @@ export default function AboutSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-            <button type="button" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
+            <a href="https://corpore-health-map.netlify.app/health-map" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
               Fazer meu Health Map gratuitamente
-            </button>
+            </a>
             <p className="text-white/40 text-xs">100% online &nbsp;•&nbsp; Gratuito &nbsp;•&nbsp; Seguro e sigiloso</p>
           </div>
         </div>

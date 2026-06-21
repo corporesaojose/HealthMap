@@ -80,9 +80,9 @@ export default function HeroSection() {
             </ul>
 
             <div className="reveal flex flex-col gap-3">
-              <button
-                type="button"
-                className="self-start font-sora font-bold rounded-full text-base transition-all duration-200 hover:-translate-y-1"
+              <a
+                href="https://corpore-health-map.netlify.app/health-map"
+                className="self-start font-sora font-bold rounded-full text-base transition-all duration-200 hover:-translate-y-1 text-center"
                 style={{
                   background: "#D7E94A",
                   color: "#0D2B2B",
@@ -92,7 +92,7 @@ export default function HeroSection() {
                 aria-label="Fazer minha avaliação de saúde gratuitamente"
               >
                 Fazer meu Health Map gratuitamente
-              </button>
+              </a>
               <p className="text-xs font-semibold tracking-wide" style={{ color: "rgba(255,255,255,0.45)" }}>
                 Avaliação gratuita &nbsp;•&nbsp; 100% online &nbsp;•&nbsp; Resultado personalizado
               </p>

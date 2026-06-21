@@ -68,9 +68,9 @@ export default function ProfilesSection() {
           <p className="text-petroleum/60 text-sm mb-4">
             Talvez você se identifique com algum desses perfis.
           </p>
-          <button type="button" className="btn-primary">
+          <a href="https://corpore-health-map.netlify.app/health-map" className="btn-primary">
             Fazer meu Health Map gratuitamente
-          </button>
+          </a>
         </div>
       </div>
     </section>

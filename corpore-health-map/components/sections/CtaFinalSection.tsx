@@ -38,13 +38,13 @@ export default function CtaFinalSection() {
             saúde, energia e estilo de vida.
           </p>
 
-          <button
-            type="button"
+          <a
+            href="https://corpore-health-map.netlify.app/health-map"
             className="btn-primary animate-pulse-lime text-base py-4 px-8"
             aria-label="Fazer minha avaliação de saúde gratuitamente"
           >
             Fazer meu Health Map gratuitamente
-          </button>
+          </a>
 
           <div className="flex items-center gap-4 flex-wrap justify-center">
             {["100% online", "Seguro e sigiloso", "Suporte humano"].map((tag) => (

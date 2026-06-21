@@ -69,9 +69,9 @@ export default function ScienceSection() {
         </div>
 
         <div className="reveal text-center">
-          <button type="button" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
+          <a href="https://corpore-health-map.netlify.app/health-map" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
             Fazer meu Health Map gratuitamente
-          </button>
+          </a>
           <p className="text-white/40 text-xs mt-3">100% online &nbsp;•&nbsp; Gratuito &nbsp;•&nbsp; Resultado personalizado</p>
         </div>
       </div>
