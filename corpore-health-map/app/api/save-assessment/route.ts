@@ -13,9 +13,23 @@ const pool = mysql.createPool({
 })
 
 export async function POST(req: NextRequest) {
-  const { registration, result } = await req.json()
+  let body: unknown
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 })
+  }
 
-  const conn = await pool.getConnection()
+  const { registration, result } = body as { registration: Record<string, string>; result: Record<string, unknown> & { profile: { id: string; name: string }; strongestPillar: { name: string }; weakestPillar: { name: string }; priorityPillar: { name: string } } }
+
+  let conn: mysql.PoolConnection
+  try {
+    conn = await pool.getConnection()
+  } catch (error) {
+    console.error('DB connection error:', error)
+    return NextResponse.json({ success: false, error: 'DB connection failed: ' + String(error) }, { status: 500 })
+  }
+
   try {
     const [leadResult] = await conn.execute(
       'INSERT INTO leads (name, phone, email, neighborhood, activity_level) VALUES (?, ?, ?, ?, ?)',
@@ -49,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, leadId, assessId })
   } catch (error) {
-    console.error('DB error:', error)
+    console.error('DB query error:', error)
     return NextResponse.json({ success: false, error: String(error) }, { status: 500 })
   } finally {
     conn.release()

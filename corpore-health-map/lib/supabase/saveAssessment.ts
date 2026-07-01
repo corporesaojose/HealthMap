@@ -20,7 +20,7 @@ export async function saveAssessment(
     .single()
 
   if (leadError || !lead) {
-    console.error('Erro ao salvar lead:', leadError)
+    console.error('Erro ao salvar lead:', JSON.stringify(leadError))
     return null
   }
 
