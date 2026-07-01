@@ -12,15 +12,17 @@ const pool = mysql.createPool({
   connectionLimit: 5,
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function POST(req: NextRequest) {
-  let body: unknown
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let body: any
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { registration, result } = body as { registration: Record<string, string>; result: Record<string, unknown> & { profile: { id: string; name: string }; strongestPillar: { name: string }; weakestPillar: { name: string }; priorityPillar: { name: string } } }
+  const { registration, result } = body
 
   let conn: mysql.PoolConnection
   try {
@@ -37,28 +39,23 @@ export async function POST(req: NextRequest) {
     )
     const leadId = (leadResult as mysql.ResultSetHeader).insertId
 
-    const [assessResult] = await conn.execute(
-      `INSERT INTO assessments
-        (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class,
-         profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        leadId,
-        result.healthScore,
-        result.healthScoreClass,
-        result.ipm,
-        result.ipmClass,
-        result.imc,
-        result.imcClass,
-        result.profile.id,
-        result.profile.name,
-        JSON.stringify(result.pillarScores),
-        result.strongestPillar.name,
-        result.weakestPillar.name,
-        result.priorityPillar.name,
-        result.age,
-      ]
-    )
+    const insertSql = 'INSERT INTO assessments (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class, profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    const [assessResult] = await conn.execute(insertSql, [
+      leadId,
+      result.healthScore,
+      result.healthScoreClass,
+      result.ipm,
+      result.ipmClass,
+      result.imc,
+      result.imcClass,
+      result.profile.id,
+      result.profile.name,
+      JSON.stringify(result.pillarScores),
+      result.strongestPillar.name,
+      result.weakestPillar.name,
+      result.priorityPillar.name,
+      result.age,
+    ])
     const assessId = (assessResult as mysql.ResultSetHeader).insertId
 
     return NextResponse.json({ success: true, leadId, assessId })
