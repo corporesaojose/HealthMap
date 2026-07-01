@@ -21,7 +21,7 @@ const LABELS = ['Movimento', 'Alimentação', 'Sono', 'Estresse', 'Relacionament
 export default function RadarChart({ slices, size = 280, animated = true, empty = false }: RadarChartProps) {
   const canvasRef = useRef<SVGSVGElement>(null)
   const N = 6
-  const padding = 28
+  const padding = 44
   const vbSize = size + padding * 2
   const cx = vbSize / 2
   const cy = vbSize / 2
