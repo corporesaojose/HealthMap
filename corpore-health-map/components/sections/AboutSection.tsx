@@ -1,11 +1,11 @@
-import Logo from "@/components/ui/Logo";
+﻿import Logo from "@/components/ui/Logo";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 const pillarsIcons = [
-  { icon: "👥", text: "Equipe especializada" },
-  { icon: "🔐", text: "Tecnologia segura e confiável" },
-  { icon: "🌿", text: "Abordagem integrativa" },
-  { icon: "🛡️", text: "Foco em prevenção e longevidade" },
+  { icon: "ðŸ‘¥", text: "Equipe especializada" },
+  { icon: "ðŸ”", text: "Tecnologia segura e confiÃ¡vel" },
+  { icon: "ðŸŒ¿", text: "Abordagem integrativa" },
+  { icon: "ðŸ›¡ï¸", text: "Foco em prevenÃ§Ã£o e longevidade" },
 ];
 
 export default function AboutSection() {
@@ -29,21 +29,21 @@ export default function AboutSection() {
                 className="font-sora font-bold text-white"
                 style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.15, letterSpacing: "-0.02em" }}
               >
-                Ciência. Cuidado. Propósito.
+                CiÃªncia. Cuidado. PropÃ³sito.
               </h2>
             </div>
           </div>
 
           <p className="text-white/75 text-base leading-relaxed max-w-2xl">
-            A Corpore Health Map nasceu para transformar dados em decisões e decisões em vida.
-            Unimos tecnologia, Medicina do Estilo de Vida e acolhimento para ajudar você no caminho
-            da sua melhor versão.
+            A Corpore Health Map nasceu para transformar dados em decisÃµes e decisÃµes em vida.
+            Unimos tecnologia, Medicina do Estilo de Vida e acolhimento para ajudar vocÃª no caminho
+            da sua melhor versÃ£o.
           </p>
 
           <p className="text-white/55 text-sm leading-relaxed max-w-2xl">
-            Criado pela Corpore Training Gym, no Jardim Esplanada, em São José dos Campos, o
-            Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida
-            a entenderem melhor seus hábitos e sinais do corpo.
+            Criado pela Corpore Training Gym, no Jardim Esplanada, em SÃ£o JosÃ© dos Campos, o
+            Corpore Health Map ajuda pessoas que buscam mais energia, saÃºde e qualidade de vida
+            a entenderem melhor seus hÃ¡bitos e sinais do corpo.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -60,13 +60,14 @@ export default function AboutSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-            <a href="https://corpore-health-map.netlify.app/health-map" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
+            <a href="https://healthmap.corporetraininggym.com.br/health-map/" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
               Fazer meu Health Map gratuitamente
             </a>
-            <p className="text-white/40 text-xs">100% online &nbsp;•&nbsp; Gratuito &nbsp;•&nbsp; Seguro e sigiloso</p>
+            <p className="text-white/40 text-xs">100% online &nbsp;â€¢&nbsp; Gratuito &nbsp;â€¢&nbsp; Seguro e sigiloso</p>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
