@@ -103,7 +103,7 @@ export default function HealthMapPage() {
 
   async function handleRegistrationNext() {
     if (result) {
-      await saveAssessment(formState.registration, result)
+      await saveAssessment(formState.registration, result, formState.pillarAnswers)
     }
     goToStep({ type: 'result' })
   }

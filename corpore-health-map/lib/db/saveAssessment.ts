@@ -1,14 +1,40 @@
-import type { RegistrationData, HealthMapResult } from '@/lib/health-map/types'
+import type { RegistrationData, HealthMapResult, PillarAnswers } from '@/lib/health-map/types'
+import { PILLARS } from '@/lib/health-map/questions'
+
+function flattenPillarAnswers(pillarAnswers: PillarAnswers) {
+  const flat = []
+  for (const [pillarIndexStr, answers] of Object.entries(pillarAnswers)) {
+    const pillarIndex = Number(pillarIndexStr)
+    const pillar = PILLARS[pillarIndex]
+    if (!pillar) continue
+    for (const answer of answers) {
+      const question = pillar.questions[answer.questionIndex]
+      if (!question) continue
+      const option = question.options[answer.optionIndex]
+      flat.push({
+        pillarName: pillar.name,
+        pillarDisplayName: pillar.displayName,
+        questionIndex: answer.questionIndex,
+        questionText: question.text,
+        optionLabel: option?.label ?? '',
+        score: answer.score,
+      })
+    }
+  }
+  return flat
+}
 
 export async function saveAssessment(
   registration: RegistrationData,
-  result: HealthMapResult
+  result: HealthMapResult,
+  pillarAnswers?: PillarAnswers
 ): Promise<string | null> {
   try {
+    const flatAnswers = pillarAnswers ? flattenPillarAnswers(pillarAnswers) : []
     const response = await fetch('/api/save-assessment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ registration, result }),
+      body: JSON.stringify({ registration, result, pillarAnswers: flatAnswers }),
     })
     const data = await response.json()
     if (!data.success) {

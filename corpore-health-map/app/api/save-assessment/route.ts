@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { registration, result } = body
+  const { registration, result, pillarAnswers } = body
 
   let conn: mysql.PoolConnection
   try {
@@ -57,6 +57,16 @@ export async function POST(req: NextRequest) {
       result.age,
     ])
     const assessId = (assessResult as mysql.ResultSetHeader).insertId
+
+    // Salvar respostas individuais por pilar
+    if (pillarAnswers && Array.isArray(pillarAnswers)) {
+      for (const pa of pillarAnswers) {
+        await conn.execute(
+          'INSERT INTO pillar_answers (assessment_id, pillar_name, pillar_display_name, question_index, question_text, option_label, score) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          [assessId, pa.pillarName, pa.pillarDisplayName, pa.questionIndex, pa.questionText, pa.optionLabel, pa.score]
+        )
+      }
+    }
 
     return NextResponse.json({ success: true, leadId, assessId })
   } catch (error) {
