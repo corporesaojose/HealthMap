@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useState, useCallback } from 'react'
 import type { FormState, Step, IpmAnswers } from '@/lib/health-map/types'
 import { PILLARS } from '@/lib/health-map/questions'
