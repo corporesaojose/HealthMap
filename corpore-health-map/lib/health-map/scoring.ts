@@ -153,7 +153,7 @@ export function calculateResult(state: FormState): HealthMapResult {
     priorityPillar,
     healthScoreClass: getHealthScoreClass(healthScore),
     ipmClass: getIpmClass(ipm),
-    obstacle: state.ipm.obstacle || '',
+    obstacle: (state.ipm.obstacles || []).join(', '),
     age: state.personal.age ? parseInt(state.personal.age) : null,
     potentialScore,
   }

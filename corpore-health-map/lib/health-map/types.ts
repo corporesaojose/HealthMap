@@ -34,7 +34,7 @@ export interface PillarAnswers {
 
 export interface IpmAnswers {
   readiness: number
-  obstacle: string
+  obstacles: string[]
   confidence: number
   future: string
   mentalFatigue: string

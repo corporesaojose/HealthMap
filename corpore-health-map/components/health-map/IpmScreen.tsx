@@ -78,7 +78,7 @@ export default function IpmScreen({ currentStep, answers, onChange, onNext }: Ip
 
   const canProceed = (() => {
     if (currentStep === 'readiness') return answers.readiness !== undefined
-    if (currentStep === 'obstacle') return !!answers.obstacle
+    if (currentStep === 'obstacle') return (answers.obstacles?.length ?? 0) > 0
     if (currentStep === 'confidence') return answers.confidence !== undefined
     if (currentStep === 'future_mental') return !!answers.future && !!answers.mentalFatigue
     return false
@@ -133,24 +133,39 @@ export default function IpmScreen({ currentStep, answers, onChange, onNext }: Ip
           </div>
         )}
 
-        {/* OBSTACLE */}
+        {/* OBSTACLE — múltipla escolha */}
         {currentStep === 'obstacle' && (
-          <div className="grid grid-cols-3 gap-2">
-            {IPM_OBSTACLES.map(obs => (
-              <button
-                key={obs.value}
-                onClick={() => onChange({ ...answers, obstacle: obs.value })}
-                className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  background: answers.obstacle === obs.value ? 'rgba(215,233,74,0.15)' : 'rgba(255,255,255,0.06)',
-                  border: answers.obstacle === obs.value ? '1.5px solid #D7E94A' : '1px solid rgba(255,255,255,0.1)',
-                  color: answers.obstacle === obs.value ? '#D7E94A' : 'rgba(255,255,255,0.75)',
-                }}
-              >
-                <span className="text-2xl">{obs.emoji}</span>
-                <span className="font-inter text-xs text-center leading-tight">{obs.label}</span>
-              </button>
-            ))}
+          <div className="flex flex-col gap-3">
+            <p className="font-inter text-xs text-center" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              Selecione quantos quiser
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              {IPM_OBSTACLES.map(obs => {
+                const selected = (answers.obstacles ?? []).includes(obs.value)
+                return (
+                  <button
+                    key={obs.value}
+                    onClick={() => {
+                      const current = answers.obstacles ?? []
+                      const next = selected
+                        ? current.filter(v => v !== obs.value)
+                        : [...current, obs.value]
+                      onChange({ ...answers, obstacles: next })
+                    }}
+                    className="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                    style={{
+                      background: selected ? 'rgba(215,233,74,0.15)' : 'rgba(255,255,255,0.06)',
+                      border: selected ? '1.5px solid #D7E94A' : '1px solid rgba(255,255,255,0.1)',
+                      color: selected ? '#D7E94A' : 'rgba(255,255,255,0.75)',
+                    }}
+                  >
+                    <span className="text-2xl">{obs.emoji}</span>
+                    <span className="font-inter text-xs text-center leading-tight">{obs.label}</span>
+                    {selected && <span className="text-xs" style={{ color: '#D7E94A' }}>✓</span>}
+                  </button>
+                )
+              })}
+            </div>
           </div>
         )}
 
