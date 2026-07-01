@@ -21,8 +21,10 @@ const LABELS = ['Movimento', 'Alimentação', 'Sono', 'Estresse', 'Relacionament
 export default function RadarChart({ slices, size = 280, animated = true, empty = false }: RadarChartProps) {
   const canvasRef = useRef<SVGSVGElement>(null)
   const N = 6
-  const cx = size / 2
-  const cy = size / 2
+  const padding = 28
+  const vbSize = size + padding * 2
+  const cx = vbSize / 2
+  const cy = vbSize / 2
   const R = size * 0.36
   const labelR = size * 0.48
 
@@ -57,7 +59,7 @@ export default function RadarChart({ slices, size = 280, animated = true, empty 
       ref={canvasRef}
       width={size}
       height={size}
-      viewBox={`0 0 ${size} ${size}`}
+      viewBox={`0 0 ${vbSize} ${vbSize}`}
       aria-label="Radar de saúde"
     >
       {/* Grid rings */}
