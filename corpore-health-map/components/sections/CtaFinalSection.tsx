@@ -1,4 +1,6 @@
-﻿export default function CtaFinalSection() {
+﻿import Image from "next/image";
+
+export default function CtaFinalSection() {
   return (
     <section
       id="cta-final"
@@ -20,9 +22,13 @@
             style={{ background: "linear-gradient(135deg, #D7E94A, #F2F8C9)" }}
             aria-hidden="true"
           >
-            <svg width="28" height="28" viewBox="0 0 100 100">
-              <path d="M78 22C66 14 50 12 36 18C20 25 10 41 10 58C10 76 22 90 38 94C54 98 70 92 80 80C86 72 90 62 90 50C90 38 85 28 78 22ZM38 86C26 80 18 68 18 54C18 40 28 27 42 22C36 30 33 40 33 50C33 62 37 74 44 82C42 84 40 85 38 86Z" fill="#0D2B2B"/>
-            </svg>
+            <Image
+              src="/logo-marca-preto.webp"
+              alt=""
+              width={28}
+              height={24}
+              className="object-contain"
+            />
           </div>
 
           <h2
