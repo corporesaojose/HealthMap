@@ -159,14 +159,14 @@ Usar naturalmente:
 - saúde preventiva
 - qualidade de vida
 - avaliação de saúde em São José dos Campos
-- Corpore Training Gym São José dos Campos
+- Corpore São José dos Campos São José dos Campos
 - academia no Jardim Esplanada
 - academia com foco em saúde
 - saúde e bem-estar em São José dos Campos
 
 ### Frase recomendada
 
-**Criado pela Corpore Training Gym, em São José dos Campos, o Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida a entenderem melhor os sinais do corpo e os pilares que mais precisam de atenção.**
+**Criado pela Corpore São José dos Campos, em São José dos Campos, o Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida a entenderem melhor os sinais do corpo e os pilares que mais precisam de atenção.**
 
 ---
 
@@ -429,7 +429,7 @@ Resposta:
 
 Resposta:
 
-**A Corpore Training Gym, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos.**
+**A Corpore São José dos Campos, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos.**
 
 ## Pergunta 8
 
@@ -489,7 +489,7 @@ Esse bloco ajuda mecanismos de inteligência artificial a entenderem rapidamente
 - saúde depois dos 40
 - pessoas acima de 40 anos
 - academia no Jardim Esplanada
-- Corpore Training Gym
+- Corpore São José dos Campos
 
 ---
 
@@ -532,19 +532,19 @@ A landing deve reforçar a localização da Corpore sem exagero.
 
 ## Rodapé obrigatório
 
-**Corpore Training Gym**  
+**Corpore São José dos Campos**  
 **Av. Barão do Rio Branco, 540 - Jardim Esplanada**  
 **São José dos Campos - SP**
 
 ## Texto local recomendado
 
-**Criado pela Corpore Training Gym, no Jardim Esplanada, em São José dos Campos, o Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida a entenderem melhor seus hábitos e sinais do corpo.**
+**Criado pela Corpore São José dos Campos, no Jardim Esplanada, em São José dos Campos, o Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida a entenderem melhor seus hábitos e sinais do corpo.**
 
 ## Termos locais para usar naturalmente
 
 - São José dos Campos
 - Jardim Esplanada
-- Corpore Training Gym
+- Corpore São José dos Campos
 - academia no Jardim Esplanada
 - saúde e bem-estar em São José dos Campos
 - avaliação de saúde em São José dos Campos
@@ -584,7 +584,7 @@ Evitar marcar como serviço médico, diagnóstico ou tratamento se não houver r
   "serviceType": "Avaliação online de saúde e estilo de vida",
   "provider": {
     "@type": "Organization",
-    "name": "Corpore Training Gym"
+    "name": "Corpore São José dos Campos"
   },
   "areaServed": {
     "@type": "City",
@@ -632,7 +632,7 @@ Evitar marcar como serviço médico, diagnóstico ou tratamento se não houver r
       "name": "Onde fazer uma avaliação de saúde em São José dos Campos?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Corpore Training Gym, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos."
+        "text": "A Corpore São José dos Campos, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos."
       }
     }
   ]
@@ -658,7 +658,7 @@ export const metadata = {
     description:
       "Entenda melhor sono, energia, estresse, alimentação, dores e hábitos com o Corpore Health Map.",
     url: "https://www.seudominio.com.br/avaliacao-de-saude-online",
-    siteName: "Corpore Training Gym",
+    siteName: "Corpore São José dos Campos",
     images: [
       {
         url: "https://www.seudominio.com.br/og-corpore-health-map.jpg",

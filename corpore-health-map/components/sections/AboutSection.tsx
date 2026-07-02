@@ -41,7 +41,7 @@ export default function AboutSection() {
           </p>
 
           <p className="text-white/55 text-sm leading-relaxed max-w-2xl">
-            Criado pela Corpore Training Gym, no Jardim Esplanada, em São José dos Campos, o
+            Criado pela Corpore São José dos Campos, no Jardim Esplanada, em São José dos Campos, o
             Corpore Health Map ajuda pessoas que buscam mais energia, saúde e qualidade de vida
             a entenderem melhor seus hábitos e sinais do corpo.
           </p>

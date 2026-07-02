@@ -29,7 +29,7 @@ export const faqs = [
   },
   {
     q: "Onde fazer uma avaliação de saúde em São José dos Campos?",
-    a: "A Corpore Training Gym, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos.",
+    a: "A Corpore São José dos Campos, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida para ajudar pessoas a entenderem melhor sono, energia, estresse, alimentação, dores e hábitos.",
   },
   {
     q: "Meus dados estão seguros?",

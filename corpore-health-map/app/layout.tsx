@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "Entenda melhor sono, energia, estresse, alimentação, dores e hábitos com o Corpore Health Map.",
     url: "https://healthmap.corporetraininggym.com.br",
-    siteName: "Corpore Training Gym",
+    siteName: "Corpore São José dos Campos",
     locale: "pt_BR",
     type: "website",
     images: [
@@ -83,7 +83,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Corpore Training Gym",
+              name: "Corpore São José dos Campos",
               alternateName: "Corpore Health Map",
               url: "https://healthmap.corporetraininggym.com.br",
               logo: "https://healthmap.corporetraininggym.com.br/logo-preto.webp",
@@ -109,7 +109,7 @@ export default function RootLayout({
               serviceType: "Avaliação online de saúde e estilo de vida",
               provider: {
                 "@type": "LocalBusiness",
-                name: "Corpore Training Gym",
+                name: "Corpore São José dos Campos",
                 address: {
                   "@type": "PostalAddress",
                   streetAddress: "Av. Barão do Rio Branco, 540",
