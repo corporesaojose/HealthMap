@@ -77,9 +77,12 @@ export default function WhatIsSection() {
             <span className="font-bold" style={{ color: "#2F6F6E" }}>acolhedora</span>,{" "}
             personalizada e baseada em ciência e comportamento humano.
           </p>
-          <button type="button" className="btn-primary flex-shrink-0">
+          <a
+            href="https://healthmap.corporetraininggym.com.br/health-map/"
+            className="btn-primary flex-shrink-0"
+          >
             Quero entender minha saúde agora
-          </button>
+          </a>
         </div>
       </div>
     </section>
