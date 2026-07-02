@@ -4,7 +4,7 @@
     {
       "name": "corpore-health-map",
       "runtimeExecutable": "cmd",
-      "runtimeArgs": ["/c", "cd /d C:\\Users\\user\\Desktop\\Claude\\corpore-health-map && npm run dev"],
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\User\\Desktop\\Claude-Code\\HealthMap\\corpore-health-map && npm run dev"],
       "port": 3000
     }
   ]

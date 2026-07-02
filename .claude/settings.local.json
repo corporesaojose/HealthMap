@@ -30,7 +30,13 @@
       "Skill(update-config)",
       "Skill(update-config:*)",
       "Bash(npx netlify-cli *)",
-      "Bash(start chrome *)"
+      "Bash(start chrome *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git rm *)",
+      "Bash(xargs -0 git rm --)",
+      "Bash(git fetch *)",
+      "Bash(git tag *)"
     ]
   }
 }

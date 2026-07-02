@@ -18,15 +18,15 @@ export const metadata: Metadata = {
   title: "Avaliação de Saúde Online Gratuita | Corpore Health Map",
   description:
     "Descubra como estão seu sono, energia, estresse, alimentação e hábitos com uma avaliação de saúde online gratuita da Corpore.",
-  metadataBase: new URL("https://healthmap.netlify.app"),
+  metadataBase: new URL("https://healthmap.corporetraininggym.com.br"),
   alternates: {
-    canonical: "https://healthmap.netlify.app",
+    canonical: "https://healthmap.corporetraininggym.com.br",
   },
   openGraph: {
     title: "Avaliação de Saúde Online Gratuita | Corpore Health Map",
     description:
       "Entenda melhor sono, energia, estresse, alimentação, dores e hábitos com o Corpore Health Map.",
-    url: "https://healthmap.netlify.app",
+    url: "https://healthmap.corporetraininggym.com.br",
     siteName: "Corpore Training Gym",
     locale: "pt_BR",
     type: "website",
