@@ -8,6 +8,11 @@ export const metadata: Metadata = {
     title: 'Meu Health Map | Corpore',
     description: 'Faça sua avaliação de saúde gratuita e descubra seu Health Score.',
     type: 'website',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 }
 

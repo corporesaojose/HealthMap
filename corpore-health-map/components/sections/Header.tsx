@@ -32,7 +32,7 @@ export default function Header() {
         {/* Logo + HEALTH MAP label */}
         <a href="#hero" aria-label="Corpore Health Map — Início" className="flex items-center gap-3">
           <Image
-            src={scrolled ? "/logo-preto.png" : "/logo-branco.png"}
+            src={scrolled ? "/logo-preto.webp" : "/logo-branco.webp"}
             alt="Corpore — Avaliação de saúde online gratuita"
             width={120}
             height={40}

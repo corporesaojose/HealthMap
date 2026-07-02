@@ -103,7 +103,7 @@ export default function HeroSection() {
           <div className="reveal flex justify-center lg:justify-end">
             <div className="relative">
               <Image
-                src="/avaliacao-saude-online-corpore-health-map.png"
+                src="/avaliacao-saude-online-corpore-health-map.webp"
                 alt="Prévia do Corpore Health Map exibindo o Health Score e os pilares de saúde — avaliação de saúde online gratuita"
                 width={320}
                 height={620}

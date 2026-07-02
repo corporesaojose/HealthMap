@@ -36,7 +36,18 @@
       "Bash(git rm *)",
       "Bash(xargs -0 git rm --)",
       "Bash(git fetch *)",
-      "Bash(git tag *)"
+      "Bash(git tag *)",
+      "Bash(xxd)",
+      "Bash(node -e ' *)",
+      "Bash(node \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/fix-encoding.js\")",
+      "Bash(rm -f components/sections/*.preview.txt components/health-map/*.preview.txt)",
+      "Bash(node \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/fix-encoding.js\" --apply)",
+      "Bash(node \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/make-icon.js\")",
+      "Bash(node _tmp_make-og.js)",
+      "Bash(cp \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/icon-512.png\" \"app/icon.png\")",
+      "Bash(cp \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/apple-icon-180.png\" \"app/apple-icon.png\")",
+      "Bash(cp \"C:/Users/User/AppData/Local/Temp/claude/C--Users-User-Desktop-Claude-Code-HealthMap/0c66e4b5-bc77-499d-9a37-ecef3f37e641/scratchpad/og-image.png\" \"public/og-image.png\")",
+      "Bash(rm _tmp_make-icon.js _tmp_make-og.js _tmp_convert-images.js)"
     ]
   }
 }

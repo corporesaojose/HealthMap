@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://healthmap.corporetraininggym.com.br",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
     title: "Avaliação de Saúde Online Gratuita | Corpore Health Map",
     description:
@@ -30,6 +38,21 @@ export const metadata: Metadata = {
     siteName: "Corpore Training Gym",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Corpore Health Map — Avaliação de Saúde Online Gratuita",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Avaliação de Saúde Online Gratuita | Corpore Health Map",
+    description:
+      "Entenda melhor sono, energia, estresse, alimentação, dores e hábitos com o Corpore Health Map.",
+    images: ["/og-image.png"],
   },
   keywords: [
     "avaliação de saúde online",
