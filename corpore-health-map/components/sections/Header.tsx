@@ -13,8 +13,8 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "#health-map", label: "O que Ã©" },
-    { href: "#ciencia", label: "CiÃªncia" },
+    { href: "#health-map", label: "O que é" },
+    { href: "#ciencia", label: "Ciência" },
     { href: "#perfis", label: "Perfis" },
     { href: "#faq", label: "FAQ" },
   ];
@@ -30,10 +30,10 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
 
         {/* Logo + HEALTH MAP label */}
-        <a href="#hero" aria-label="Corpore Health Map â€” InÃ­cio" className="flex items-center gap-3">
+        <a href="#hero" aria-label="Corpore Health Map — Início" className="flex items-center gap-3">
           <Image
             src={scrolled ? "/logo-preto.png" : "/logo-branco.png"}
-            alt="Corpore â€” AvaliaÃ§Ã£o de saÃºde online gratuita"
+            alt="Corpore — Avaliação de saúde online gratuita"
             width={120}
             height={40}
             className="h-9 w-auto object-contain"
@@ -52,7 +52,7 @@ export default function Header() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="NavegaÃ§Ã£o principal">
+        <nav className="hidden md:flex items-center gap-8" aria-label="Navegação principal">
           {navLinks.map((l) => (
             <a
               key={l.href}
@@ -66,7 +66,7 @@ export default function Header() {
               {l.label}
             </a>
           ))}
-          {/* BotÃ£o lima */}
+          {/* Botão lima */}
           <a
             href="https://healthmap.corporetraininggym.com.br/health-map/"
             className="font-sora font-bold text-sm rounded-full px-6 py-3 transition-all duration-200 hover:-translate-y-0.5"

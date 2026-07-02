@@ -2,24 +2,24 @@
 
 const cards = [
   {
-    icon: "ðŸ©º",
+    icon: "🩺",
     title: "Medicina do Estilo de Vida",
-    text: "Uma abordagem baseada em prevenÃ§Ã£o, comportamento e qualidade de vida.",
+    text: "Uma abordagem baseada em prevenção, comportamento e qualidade de vida.",
   },
   {
-    icon: "ðŸ¤–",
+    icon: "🤖",
     title: "Tecnologia Inteligente",
-    text: "A IA ajuda a organizar informaÃ§Ãµes e personalizar a leitura dos seus dados.",
+    text: "A IA ajuda a organizar informações e personalizar a leitura dos seus dados.",
   },
   {
-    icon: "ðŸŒ",
-    title: "VisÃ£o do Todo",
-    text: "Sono, energia, estresse, alimentaÃ§Ã£o, movimento e conexÃµes analisados em conjunto.",
+    icon: "🌐",
+    title: "Visão do Todo",
+    text: "Sono, energia, estresse, alimentação, movimento e conexões analisados em conjunto.",
   },
   {
-    icon: "ðŸ’¡",
-    title: "RecomendaÃ§Ãµes PrÃ¡ticas",
-    text: "OrientaÃ§Ãµes iniciais para vocÃª entender por onde comeÃ§ar.",
+    icon: "💡",
+    title: "Recomendações Práticas",
+    text: "Orientações iniciais para você entender por onde começar.",
   },
 ];
 
@@ -34,23 +34,23 @@ export default function ScienceSection() {
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
         <div className="reveal text-center max-w-2xl mx-auto flex flex-col gap-4">
           <SectionLabel className="block text-center" style={{ color: "#D7E94A" } as React.CSSProperties}>
-            CIÃŠNCIA QUE GUIA CADA DECISÃƒO
+            CIÊNCIA QUE GUIA CADA DECISÃO
           </SectionLabel>
           <h2
             id="science-title"
             className="font-sora font-bold text-white"
             style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", lineHeight: 1.15, letterSpacing: "-0.025em" }}
           >
-            Medicina do Estilo de Vida aplicada Ã  sua rotina.
+            Medicina do Estilo de Vida aplicada à sua rotina.
           </h2>
           <p className="text-white/70 text-base leading-relaxed">
             O Corpore Health Map foi desenvolvido com base nos pilares da Medicina do Estilo de Vida,
-            Ã¡rea da medicina focada em prevenÃ§Ã£o, comportamento e qualidade de vida.
+            área da medicina focada em prevenção, comportamento e qualidade de vida.
           </p>
           <p className="text-white/60 text-sm leading-relaxed">
-            A inteligÃªncia artificial Ã© utilizada apenas para acelerar e personalizar a experiÃªncia.
-            O mais importante continua sendo o conhecimento cientÃ­fico, o comportamento humano e a
-            interpretaÃ§Ã£o prÃ¡tica da vida real.
+            A inteligência artificial é utilizada apenas para acelerar e personalizar a experiência.
+            O mais importante continua sendo o conhecimento científico, o comportamento humano e a
+            interpretação prática da vida real.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function ScienceSection() {
           <a href="https://healthmap.corporetraininggym.com.br/health-map/" className="btn-primary" style={{ background: "#D7E94A", color: "#0D2B2B" }}>
             Fazer meu Health Map gratuitamente
           </a>
-          <p className="text-white/40 text-xs mt-3">100% online &nbsp;â€¢&nbsp; Gratuito &nbsp;â€¢&nbsp; Resultado personalizado</p>
+          <p className="text-white/40 text-xs mt-3">100% online &nbsp;•&nbsp; Gratuito &nbsp;•&nbsp; Resultado personalizado</p>
         </div>
       </div>
     </section>

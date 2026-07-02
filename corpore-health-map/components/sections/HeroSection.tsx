@@ -14,12 +14,12 @@ export default function HeroSection() {
   }, []);
 
   const pillars = [
-    "AlimentaÃ§Ã£o SaudÃ¡vel",
-    "Atividade FÃ­sica",
-    "GestÃ£o do Estresse",
+    "Alimentação Saudável",
+    "Atividade Física",
+    "Gestão do Estresse",
     "Sono Reparador",
-    "ConexÃµes Sociais",
-    "Controle de SubstÃ¢ncias",
+    "Conexões Sociais",
+    "Controle de Substâncias",
   ];
 
   const badgeStyle = {
@@ -51,18 +51,18 @@ export default function HeroSection() {
               className="reveal font-sora font-bold text-white leading-tight"
               style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}
             >
-              Seu corpo pode estar pedindo ajudaâ€¦ mesmo que vocÃª ainda consiga{" "}
+              Seu corpo pode estar pedindo ajuda… mesmo que você ainda consiga{" "}
               <span style={{ color: "#D7E94A" }}>"dar conta"</span>
             </h1>
 
             <div className="reveal flex flex-col gap-3 max-w-lg">
               <p className="text-white/85 text-lg leading-relaxed font-semibold">
-                Descubra agora o que pode estar afetando sua energia, disposiÃ§Ã£o e qualidade de vida.
+                Descubra agora o que pode estar afetando sua energia, disposição e qualidade de vida.
               </p>
               <p className="text-white/60 text-base leading-relaxed">
-                Receba gratuitamente um mapa personalizado da sua saÃºde, desenvolvido por mÃ©dicos
-                especialistas em Medicina do Estilo de Vida, com anÃ¡lise dos principais pilares
-                que influenciam sua saÃºde e longevidade:
+                Receba gratuitamente um mapa personalizado da sua saúde, desenvolvido por médicos
+                especialistas em Medicina do Estilo de Vida, com análise dos principais pilares
+                que influenciam sua saúde e longevidade:
               </p>
             </div>
 
@@ -89,12 +89,12 @@ export default function HeroSection() {
                   padding: "16px 28px",
                   boxShadow: "0 12px 32px rgba(215,233,74,0.35)",
                 }}
-                aria-label="Fazer minha avaliaÃ§Ã£o de saÃºde gratuitamente"
+                aria-label="Fazer minha avaliação de saúde gratuitamente"
               >
                 Fazer meu Health Map gratuitamente
               </a>
               <p className="text-xs font-semibold tracking-wide" style={{ color: "rgba(255,255,255,0.45)" }}>
-                AvaliaÃ§Ã£o gratuita &nbsp;â€¢&nbsp; 100% online &nbsp;â€¢&nbsp; Resultado personalizado
+                Avaliação gratuita &nbsp;•&nbsp; 100% online &nbsp;•&nbsp; Resultado personalizado
               </p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function HeroSection() {
             <div className="relative">
               <Image
                 src="/avaliacao-saude-online-corpore-health-map.png"
-                alt="PrÃ©via do Corpore Health Map exibindo o Health Score e os pilares de saÃºde â€” avaliaÃ§Ã£o de saÃºde online gratuita"
+                alt="Prévia do Corpore Health Map exibindo o Health Score e os pilares de saúde — avaliação de saúde online gratuita"
                 width={320}
                 height={620}
                 priority
@@ -116,17 +116,17 @@ export default function HeroSection() {
                 className="absolute -top-3 -right-4 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
                 style={badgeStyle}
               >
-                <span style={{ color: "#D7E94A" }}>âœ¦</span>
-                Baseado em ciÃªncia e experiÃªncia prÃ¡tica
+                <span style={{ color: "#D7E94A" }}>✦</span>
+                Baseado em ciência e experiência prática
               </div>
 
-              {/* Badge meio â€” centralizado na altura da imagem */}
+              {/* Badge meio — centralizado na altura da imagem */}
               <div
                 className="absolute -left-6 bottom-0 px-3 py-2 text-xs font-semibold flex items-center gap-1.5 shadow-lg"
                 style={badgeStyle}
               >
-                <span style={{ color: "#D7E94A" }}>âœ¦</span>
-                Resultado rÃ¡pido e personalizado
+                <span style={{ color: "#D7E94A" }}>✦</span>
+                Resultado rápido e personalizado
               </div>
             </div>
           </div>

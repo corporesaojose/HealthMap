@@ -30,18 +30,18 @@
             className="font-sora font-bold text-petroleum"
             style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)", lineHeight: 1.15, letterSpacing: "-0.025em" }}
           >
-            VocÃª continua dando conta. Mas talvez esteja na hora de voltar a cuidar de vocÃª tambÃ©m.
+            Você continua dando conta. Mas talvez esteja na hora de voltar a cuidar de você também.
           </h2>
 
           <p className="text-petroleum/65 text-base leading-relaxed max-w-lg">
-            FaÃ§a gratuitamente seu Corpore Health Map e descubra como estÃ£o os pilares da sua
-            saÃºde, energia e estilo de vida.
+            Faça gratuitamente seu Corpore Health Map e descubra como estão os pilares da sua
+            saúde, energia e estilo de vida.
           </p>
 
           <a
             href="https://healthmap.corporetraininggym.com.br/health-map/"
             className="btn-primary animate-pulse-lime text-base py-4 px-8"
-            aria-label="Fazer minha avaliaÃ§Ã£o de saÃºde gratuitamente"
+            aria-label="Fazer minha avaliação de saúde gratuitamente"
           >
             Fazer meu Health Map gratuitamente
           </a>
