@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+import { faqs } from "@/lib/health-map/faq";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -81,6 +82,28 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Corpore Training Gym",
+              alternateName: "Corpore Health Map",
+              url: "https://healthmap.corporetraininggym.com.br",
+              logo: "https://healthmap.corporetraininggym.com.br/logo-preto.webp",
+              description:
+                "Academia especializada em Medicina do Estilo de Vida, oferecendo o Corpore Health Map: uma avaliação online gratuita de saúde e estilo de vida.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Av. Barão do Rio Branco, 540",
+                addressLocality: "São José dos Campos",
+                addressRegion: "SP",
+                addressCountry: "BR",
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "Service",
               name: "Corpore Health Map",
               serviceType: "Avaliação online de saúde e estilo de vida",
@@ -115,32 +138,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "O que é uma avaliação de saúde online?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Uma avaliação de saúde online é uma forma inicial de entender hábitos, rotina, sono, energia, estresse, alimentação, dores e outros fatores relacionados à qualidade de vida. Ela não substitui uma consulta médica, mas ajuda a identificar pontos de atenção.",
-                  },
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.q,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.a,
                 },
-                {
-                  "@type": "Question",
-                  name: "A avaliação de saúde online substitui consulta médica?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Não. A avaliação de saúde online não substitui consulta médica, diagnóstico ou tratamento. Ela funciona como uma leitura inicial de hábitos e estilo de vida.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Onde fazer uma avaliação de saúde em São José dos Campos?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "A Corpore Training Gym, localizada no Jardim Esplanada em São José dos Campos, oferece o Corpore Health Map, uma avaliação online gratuita de saúde e estilo de vida.",
-                  },
-                },
-              ],
+              })),
             }),
           }}
         />

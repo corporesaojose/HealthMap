@@ -1,0 +1,14 @@
+# Corpore Health Map
+
+> Avaliação de saúde online gratuita criada pela Corpore Training Gym (São José dos Campos, SP, Brasil), baseada nos pilares da Medicina do Estilo de Vida. Ajuda pessoas a entenderem sinais como cansaço constante, falta de energia, sono ruim, estresse alto, dores no corpo e dificuldade de manter uma rotina saudável.
+
+O Corpore Health Map é um questionário online gratuito, feito em poucos minutos, que gera um Health Score e uma leitura personalizada sobre 6 pilares: Alimentação Saudável, Atividade Física, Gestão do Estresse, Sono Reparador, Conexões Sociais e Controle de Substâncias. Não substitui consulta médica, diagnóstico ou tratamento — é uma leitura inicial de hábitos e estilo de vida.
+
+## Páginas
+
+- [Landing page](https://healthmap.corporetraininggym.com.br/): apresentação da avaliação, perfis comuns de quem se beneficia dela, ciência por trás do método e perguntas frequentes.
+- [Fazer a avaliação](https://healthmap.corporetraininggym.com.br/health-map/): formulário interativo da avaliação de saúde (não indexado para busca, é a etapa de preenchimento).
+
+## Sobre a Corpore Training Gym
+
+Academia localizada na Av. Barão do Rio Branco, 540, Jardim Esplanada, São José dos Campos, SP, especializada em Medicina do Estilo de Vida.
