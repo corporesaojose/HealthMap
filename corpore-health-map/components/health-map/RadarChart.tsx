@@ -14,11 +14,12 @@ interface RadarChartProps {
   size?: number
   animated?: boolean
   empty?: boolean
+  responsive?: boolean
 }
 
 const LABELS = ['Movimento', 'Alimentação', 'Sono', 'Estresse', 'Relacionamentos', 'Hábitos']
 
-export default function RadarChart({ slices, size = 280, animated = true, empty = false }: RadarChartProps) {
+export default function RadarChart({ slices, size = 280, animated = true, empty = false, responsive = false }: RadarChartProps) {
   const canvasRef = useRef<SVGSVGElement>(null)
   const N = 6
   const padding = 44
@@ -57,8 +58,9 @@ export default function RadarChart({ slices, size = 280, animated = true, empty 
   return (
     <svg
       ref={canvasRef}
-      width={size}
-      height={size}
+      width={responsive ? '100%' : size}
+      height={responsive ? undefined : size}
+      style={responsive ? { display: 'block', width: '100%', height: 'auto', aspectRatio: '1 / 1' } : undefined}
       viewBox={`0 0 ${vbSize} ${vbSize}`}
       aria-label="Radar de saúde"
     >

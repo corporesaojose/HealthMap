@@ -15,11 +15,11 @@ export default function HeroSection() {
 
   const pillars = [
     "Alimentação Saudável",
-    "Atividade Física",
-    "Gestão do Estresse",
-    "Sono Reparador",
+    "Atividade Física Regular",
+    "Saúde do Sono",
+    "Controle de Substâncias Tóxicas",
+    "Manejo do Estresse",
     "Conexões Sociais",
-    "Controle de Substâncias",
   ];
 
   const badgeStyle = {

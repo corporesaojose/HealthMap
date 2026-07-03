@@ -4,7 +4,7 @@ const discoveries = [
   {
     icon: "📊",
     title: "Score dos pilares da Medicina do Estilo de Vida",
-    items: ["Alimentação Saudável", "Atividade Física", "Sono Reparador", "Controle de Substâncias Tóxicas", "Gestão do Estresse", "Conexões Sociais"],
+    items: ["Alimentação Saudável", "Atividade Física Regular", "Saúde do Sono", "Controle de Substâncias Tóxicas", "Manejo do Estresse", "Conexões Sociais"],
   },
   {
     icon: "🔍",

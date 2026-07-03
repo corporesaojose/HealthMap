@@ -8,12 +8,12 @@ interface WelcomeScreenProps {
 }
 
 const PILLARS_LIST = [
-  { emoji: '🏃', label: 'Movimento' },
-  { emoji: '🥗', label: 'Alimentação' },
-  { emoji: '😴', label: 'Sono' },
-  { emoji: '🧠', label: 'Estresse' },
-  { emoji: '🤝', label: 'Relacionamentos' },
-  { emoji: '🛡️', label: 'Hábitos de Saúde' },
+  { emoji: '🏃', label: 'Atividade Física Regular' },
+  { emoji: '🥗', label: 'Alimentação Saudável' },
+  { emoji: '😴', label: 'Saúde do Sono' },
+  { emoji: '🧠', label: 'Manejo do Estresse' },
+  { emoji: '🤝', label: 'Conexões Sociais' },
+  { emoji: '🛡️', label: 'Controle de Substâncias Tóxicas' },
 ]
 
 export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
@@ -54,13 +54,14 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
 
         {/* Radar vazio pulsante */}
         <div
+          className="w-full max-w-[340px] mx-auto"
           style={{
             opacity: radarPulse ? 1 : 0,
             transform: radarPulse ? 'scale(1)' : 'scale(0.9)',
             transition: 'opacity 0.6s ease, transform 0.6s ease',
           }}
         >
-          <RadarChart slices={[]} size={220} empty animated />
+          <RadarChart slices={[]} size={220} empty animated responsive />
         </div>
 
         {/* Headline */}

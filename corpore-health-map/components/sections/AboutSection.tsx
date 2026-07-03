@@ -4,7 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 const pillarsIcons = [
   { icon: "👥", text: "Equipe especializada" },
   { icon: "🔐", text: "Tecnologia segura e confiável" },
-  { icon: "🌿", text: "Abordagem integrativa" },
+  { icon: "🌿", text: "Abordagem multidisciplinar integrada" },
   { icon: "🛡️", text: "Foco em prevenção e longevidade" },
 ];
 
