@@ -7,7 +7,7 @@ import type { FormState, Step, IpmAnswers } from '@/lib/health-map/types'
 import { PILLARS } from '@/lib/health-map/questions'
 import { calculateResult } from '@/lib/health-map/scoring'
 import { saveAssessment } from '@/lib/db/saveAssessment'
-import { trackLead } from '@/lib/meta-pixel'
+import { trackLead, trackStartQuiz } from '@/lib/meta-pixel'
 
 import WelcomeScreen from '@/components/health-map/WelcomeScreen'
 import PersonalDataScreen from '@/components/health-map/PersonalDataScreen'
@@ -49,6 +49,7 @@ export default function HealthMapPage() {
 
   // Step handlers
   function handleWelcomeStart() {
+    trackStartQuiz()
     goToStep({ type: 'personal' })
   }
 
