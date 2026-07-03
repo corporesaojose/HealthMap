@@ -318,6 +318,8 @@ export const IPM_OBSTACLES = [
   { label: 'Falta de conhecimento', emoji: '📚', value: 'conhecimento' },
   { label: 'Questões financeiras', emoji: '💰', value: 'financeiro' },
   { label: 'Falta de apoio', emoji: '🤝', value: 'apoio' },
+  { label: 'Falta da solução adequada', emoji: '🧩', value: 'solucao' },
+  { label: 'Dificuldade de transformar intenção em ação (sei que é importante, mas não consigo mudar)', emoji: '🔄', value: 'intencao_acao' },
   { label: 'Outro', emoji: '💭', value: 'outro' },
 ]
 

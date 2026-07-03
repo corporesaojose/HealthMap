@@ -17,17 +17,41 @@ interface RadarChartProps {
   responsive?: boolean
 }
 
-const LABELS = ['Movimento', 'Alimentação', 'Sono', 'Estresse', 'Relacionamentos', 'Hábitos']
+const LABELS = [
+  'Atividade Física Regular',
+  'Alimentação Saudável',
+  'Saúde do Sono',
+  'Manejo do Estresse',
+  'Conexões Sociais',
+  'Controle de Substâncias Tóxicas',
+]
+
+function wrapLabel(label: string, maxCharsPerLine = 12) {
+  const words = label.split(' ')
+  const lines: string[] = []
+  let current = ''
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word
+    if (candidate.length > maxCharsPerLine && current) {
+      lines.push(current)
+      current = word
+    } else {
+      current = candidate
+    }
+  }
+  if (current) lines.push(current)
+  return lines
+}
 
 export default function RadarChart({ slices, size = 280, animated = true, empty = false, responsive = false }: RadarChartProps) {
   const canvasRef = useRef<SVGSVGElement>(null)
   const N = 6
-  const padding = 44
+  const padding = 60
   const vbSize = size + padding * 2
   const cx = vbSize / 2
   const cy = vbSize / 2
   const R = size * 0.36
-  const labelR = size * 0.48
+  const labelR = size * 0.46
 
   function getPoint(angle: number, r: number) {
     return {
@@ -150,19 +174,29 @@ export default function RadarChart({ slices, size = 280, animated = true, empty 
         const p = getPoint(angle, labelR)
         const score = filledScores[i]
         const color = !empty && score > 0 ? (slices[i]?.color ?? '#D7E94A') : 'rgba(255,255,255,0.3)'
+        const lines = wrapLabel(label)
+        const lineHeight = 1.15
 
         return (
           <text
             key={i}
             x={p.x}
-            y={p.y + 4}
+            y={p.y}
             textAnchor="middle"
             fill={color}
             fontSize={size < 200 ? '9' : '11'}
             fontFamily="var(--font-sora), sans-serif"
             fontWeight="600"
           >
-            {label}
+            {lines.map((line, li) => (
+              <tspan
+                key={li}
+                x={p.x}
+                dy={li === 0 ? `${-(lines.length - 1) * lineHeight * 0.5 + 0.32}em` : `${lineHeight}em`}
+              >
+                {line}
+              </tspan>
+            ))}
           </text>
         )
       })}
