@@ -7,6 +7,7 @@ import type { FormState, Step, IpmAnswers } from '@/lib/health-map/types'
 import { PILLARS } from '@/lib/health-map/questions'
 import { calculateResult } from '@/lib/health-map/scoring'
 import { saveAssessment } from '@/lib/db/saveAssessment'
+import { trackLead } from '@/lib/meta-pixel'
 
 import WelcomeScreen from '@/components/health-map/WelcomeScreen'
 import PersonalDataScreen from '@/components/health-map/PersonalDataScreen'
@@ -103,7 +104,10 @@ export default function HealthMapPage() {
 
   async function handleRegistrationNext() {
     if (result) {
-      await saveAssessment(formState.registration, result, formState.pillarAnswers)
+      const assessId = await saveAssessment(formState.registration, result, formState.pillarAnswers)
+      if (assessId) {
+        trackLead()
+      }
     }
     goToStep({ type: 'result' })
   }
