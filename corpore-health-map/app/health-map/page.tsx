@@ -8,6 +8,7 @@ import { PILLARS } from '@/lib/health-map/questions'
 import { calculateResult } from '@/lib/health-map/scoring'
 import { saveAssessment } from '@/lib/db/saveAssessment'
 import { trackLead, trackStartQuiz } from '@/lib/meta-pixel'
+import { sendLeadToMetaCapi } from '@/lib/meta-capi-webhook'
 
 import WelcomeScreen from '@/components/health-map/WelcomeScreen'
 import PersonalDataScreen from '@/components/health-map/PersonalDataScreen'
@@ -107,7 +108,9 @@ export default function HealthMapPage() {
     if (result) {
       const assessId = await saveAssessment(formState.registration, result, formState.pillarAnswers)
       if (assessId) {
-        trackLead()
+        const eventId = crypto.randomUUID()
+        trackLead(eventId)
+        sendLeadToMetaCapi(formState.registration, eventId)
       }
     }
     goToStep({ type: 'result' })
