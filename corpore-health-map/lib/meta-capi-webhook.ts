@@ -1,6 +1,9 @@
 import type { RegistrationData } from '@/lib/health-map/types'
 
-const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_HEALTH_MAP_WEBHOOK_URL
+// URL pública do webhook (não é segredo — qualquer NEXT_PUBLIC_* já fica
+// exposto no bundle do navegador). Fixada no código porque o build do
+// Hostinger não repassa variáveis de ambiente para o passo `next build`.
+const N8N_WEBHOOK_URL = 'https://n8n.corporetraininggym.com.br/webhook/health-map-lead'
 
 function getCookie(name: string): string | null {
   return document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]+)`))?.[1] ?? null
