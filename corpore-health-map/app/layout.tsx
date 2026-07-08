@@ -5,6 +5,9 @@ import "./globals.css";
 import { faqs } from "@/lib/health-map/faq";
 
 const META_PIXEL_ID = "1841018156120390";
+// Mesma URL usada em lib/meta-capi-webhook.ts — fixada no código porque o
+// build do Hostinger não repassa variáveis de ambiente para `next build`.
+const N8N_WEBHOOK_URL = "https://n8n.corporetraininggym.com.br/webhook/health-map-lead";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -94,8 +97,30 @@ export default function RootLayout({
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
 
+              var pvEventId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ('pv_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9));
               fbq('init', '${META_PIXEL_ID}');
-              fbq('track', 'PageView');
+              fbq('track', 'PageView', {}, { eventID: pvEventId });
+
+              // Espelha o PageView pro Meta CAPI (servidor) com o mesmo
+              // event_id — cobre visitantes com o pixel bloqueado (iOS,
+              // ad-blockers). Delay dá tempo do fbevents.js gravar _fbp/_fbc.
+              setTimeout(function() {
+                var fbp = (document.cookie.match(/(?:^|; )_fbp=([^;]+)/) || [])[1] || null;
+                var fbc = (document.cookie.match(/(?:^|; )_fbc=([^;]+)/) || [])[1] || null;
+                fetch('${N8N_WEBHOOK_URL}', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    event_name: 'PageView',
+                    event_id: pvEventId,
+                    event_time: Math.floor(Date.now() / 1000),
+                    page_url: window.location.href,
+                    client_user_agent: navigator.userAgent,
+                    fbp: fbp,
+                    fbc: fbc
+                  })
+                }).catch(function() {});
+              }, 1200);
             }
           `}
         </Script>

@@ -9,19 +9,26 @@ function getCookie(name: string): string | null {
   return document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]+)`))?.[1] ?? null
 }
 
+interface SendMetaCapiEventParams {
+  eventName: string
+  eventId: string
+  registration?: RegistrationData
+}
+
 // Dispara em paralelo ao Pixel do navegador, com o mesmo eventId, para que o
-// n8n monte e envie o evento Lead ao Meta CAPI (servidor) — o Meta deduplica
-// os dois sinais (Pixel + CAPI) usando esse event_id compartilhado.
-export function sendLeadToMetaCapi(registration: RegistrationData, eventId: string) {
-  if (typeof window === 'undefined' || !N8N_WEBHOOK_URL) return
+// n8n monte e envie o evento correspondente ao Meta CAPI (servidor) — o Meta
+// deduplica os dois sinais (Pixel + CAPI) usando esse event_id compartilhado.
+export function sendEventToMetaCapi({ eventName, eventId, registration }: SendMetaCapiEventParams) {
+  if (typeof window === 'undefined') return
 
   fetch(N8N_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      nome: registration.name,
-      telefone: registration.phone,
-      email: registration.email,
+      event_name: eventName,
+      nome: registration?.name ?? '',
+      telefone: registration?.phone ?? '',
+      email: registration?.email ?? '',
       event_id: eventId,
       event_time: Math.floor(Date.now() / 1000),
       page_url: window.location.href,
@@ -29,5 +36,5 @@ export function sendLeadToMetaCapi(registration: RegistrationData, eventId: stri
       fbp: getCookie('_fbp'),
       fbc: getCookie('_fbc'),
     }),
-  }).catch(error => console.error('Erro ao enviar lead para o Meta CAPI:', error))
+  }).catch(error => console.error(`Erro ao enviar ${eventName} para o Meta CAPI:`, error))
 }

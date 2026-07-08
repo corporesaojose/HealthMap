@@ -8,7 +8,7 @@ import { PILLARS } from '@/lib/health-map/questions'
 import { calculateResult } from '@/lib/health-map/scoring'
 import { saveAssessment } from '@/lib/db/saveAssessment'
 import { trackLead, trackStartQuiz } from '@/lib/meta-pixel'
-import { sendLeadToMetaCapi } from '@/lib/meta-capi-webhook'
+import { sendEventToMetaCapi } from '@/lib/meta-capi-webhook'
 
 import WelcomeScreen from '@/components/health-map/WelcomeScreen'
 import PersonalDataScreen from '@/components/health-map/PersonalDataScreen'
@@ -50,7 +50,9 @@ export default function HealthMapPage() {
 
   // Step handlers
   function handleWelcomeStart() {
-    trackStartQuiz()
+    const eventId = crypto.randomUUID()
+    trackStartQuiz(eventId)
+    sendEventToMetaCapi({ eventName: 'StartQuiz', eventId })
     goToStep({ type: 'personal' })
   }
 
@@ -110,7 +112,7 @@ export default function HealthMapPage() {
       if (assessId) {
         const eventId = crypto.randomUUID()
         trackLead(eventId)
-        sendLeadToMetaCapi(formState.registration, eventId)
+        sendEventToMetaCapi({ eventName: 'Lead', eventId, registration: formState.registration })
       }
     }
     goToStep({ type: 'result' })
