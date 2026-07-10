@@ -133,8 +133,14 @@ export default function ResultScreen({ result, firstName }: ResultScreenProps) {
             className="mt-2 font-sora font-bold text-white"
             style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', letterSpacing: '-0.02em' }}
           >
-            {firstName ? `${firstName}, seu resultado está pronto` : 'Seu Resultado Está Pronto'}
+            {firstName ? `${firstName}, aqui está um resumo do seu Health Map` : 'Aqui está um resumo do seu Health Map'}
           </h1>
+          <p
+            className="mt-2 font-inter text-sm leading-relaxed"
+            style={{ color: 'rgba(255,255,255,0.6)' }}
+          >
+            Acabamos de enviar no seu WhatsApp o relatório mais detalhado e um presente especial da Corpore por ter chegado até aqui!
+          </p>
         </div>
 
         {/* PERFIL COMPORTAMENTAL — primeiro */}
@@ -409,7 +415,9 @@ export default function ResultScreen({ result, firstName }: ResultScreenProps) {
             📤 Compartilhar meu resultado
           </button>
           <a
-            href="/"
+            href="https://www.instagram.com/corporesjc"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full text-center font-inter text-sm py-3 rounded-full transition-all duration-200 hover:opacity-80"
             style={{
               color: 'rgba(255,255,255,0.5)',
