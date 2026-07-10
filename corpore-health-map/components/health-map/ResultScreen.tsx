@@ -395,25 +395,6 @@ export default function ResultScreen({ result, firstName }: ResultScreenProps) {
 
         {/* CTA final */}
         <div className="flex flex-col gap-3 pb-8">
-          <button
-            className="w-full font-sora font-bold text-petroleum rounded-full py-4 transition-all duration-200 hover:-translate-y-1"
-            style={{
-              background: '#D7E94A',
-              boxShadow: '0 12px 32px rgba(215,233,74,0.35)',
-              fontSize: '1rem',
-            }}
-            onClick={() => {
-              if (navigator.share) {
-                navigator.share({
-                  title: 'Meu Health Map — Corpore',
-                  text: `Fiz meu Health Map e tirei ${result.healthScore}/100. Faça o seu!`,
-                  url: window.location.href,
-                })
-              }
-            }}
-          >
-            📤 Compartilhar meu resultado
-          </button>
           <a
             href="https://www.instagram.com/corporesjc"
             target="_blank"
