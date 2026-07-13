@@ -58,6 +58,15 @@ export default function ResultScreen({ result, firstName }: ResultScreenProps) {
           >
             Enviamos seu resultado completo no WhatsApp cadastrado. Dá uma olhada por lá!
           </p>
+          <a
+            href="https://wa.me/551239094444"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-4 font-sora font-bold text-petroleum rounded-full px-8 py-4 transition-all duration-200 hover:-translate-y-1"
+            style={{ background: '#D7E94A', boxShadow: '0 12px 32px rgba(215,233,74,0.35)', fontSize: '1rem' }}
+          >
+            💬 Abrir o WhatsApp pra ver o resultado completo
+          </a>
         </div>
 
         {/* PERFIL COMPORTAMENTAL — primeiro */}
@@ -113,22 +122,6 @@ export default function ResultScreen({ result, firstName }: ResultScreenProps) {
               Baseado nos 6 pilares da Medicina do Estilo de Vida
             </p>
           </div>
-        </div>
-
-        {/* CTA final */}
-        <div className="flex flex-col gap-3 pb-8">
-          <a
-            href="https://www.instagram.com/corporesjc"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full text-center font-inter text-sm py-3 rounded-full transition-all duration-200 hover:opacity-80"
-            style={{
-              color: 'rgba(255,255,255,0.5)',
-              border: '1px solid rgba(255,255,255,0.1)',
-            }}
-          >
-            Conhecer a Corpore
-          </a>
         </div>
       </div>
     </div>
