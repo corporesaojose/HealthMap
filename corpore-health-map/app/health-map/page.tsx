@@ -9,6 +9,7 @@ import { calculateResult } from '@/lib/health-map/scoring'
 import { saveAssessment } from '@/lib/db/saveAssessment'
 import { trackLead, trackStartQuiz } from '@/lib/meta-pixel'
 import { sendEventToMetaCapi } from '@/lib/meta-capi-webhook'
+import { sendHealthMapReportWebhook } from '@/lib/health-map-report-webhook'
 
 import WelcomeScreen from '@/components/health-map/WelcomeScreen'
 import PersonalDataScreen from '@/components/health-map/PersonalDataScreen'
@@ -108,11 +109,17 @@ export default function HealthMapPage() {
 
   async function handleRegistrationNext() {
     if (result) {
-      const assessId = await saveAssessment(formState.registration, result, formState.pillarAnswers)
-      if (assessId) {
+      const saved = await saveAssessment(formState.registration, result, formState.pillarAnswers)
+      if (saved) {
         const eventId = crypto.randomUUID()
         trackLead(eventId)
         sendEventToMetaCapi({ eventName: 'Lead', eventId, registration: formState.registration })
+        sendHealthMapReportWebhook({
+          registration: formState.registration,
+          result,
+          assessId: saved.assessId,
+          reportToken: saved.reportToken,
+        })
       }
     }
     goToStep({ type: 'result' })

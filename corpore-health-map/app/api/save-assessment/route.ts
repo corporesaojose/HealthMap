@@ -1,16 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import mysql from 'mysql2/promise'
-
-const pool = mysql.createPool({
-  ...(process.env.DB_SOCKET
-    ? { socketPath: process.env.DB_SOCKET }
-    : { host: process.env.DB_HOST, port: parseInt(process.env.DB_PORT || '3306'), ssl: { rejectUnauthorized: false } }),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 5,
-})
+import { randomUUID } from 'crypto'
+import { pool } from '@/lib/db/pool'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function POST(req: NextRequest) {
@@ -39,7 +30,9 @@ export async function POST(req: NextRequest) {
     )
     const leadId = (leadResult as mysql.ResultSetHeader).insertId
 
-    const insertSql = 'INSERT INTO assessments (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class, profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    const reportToken = randomUUID()
+
+    const insertSql = 'INSERT INTO assessments (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class, profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age, report_token) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     const [assessResult] = await conn.execute(insertSql, [
       leadId,
       result.healthScore,
@@ -55,6 +48,7 @@ export async function POST(req: NextRequest) {
       result.weakestPillar.name,
       result.priorityPillar.name,
       result.age,
+      reportToken,
     ])
     const assessId = (assessResult as mysql.ResultSetHeader).insertId
 
@@ -68,7 +62,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({ success: true, leadId, assessId })
+    return NextResponse.json({ success: true, leadId, assessId, reportToken })
   } catch (error) {
     console.error('DB query error:', error)
     return NextResponse.json({ success: false, error: String(error) }, { status: 500 })

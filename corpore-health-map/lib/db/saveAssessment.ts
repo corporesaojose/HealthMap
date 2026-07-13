@@ -24,11 +24,16 @@ function flattenPillarAnswers(pillarAnswers: PillarAnswers) {
   return flat
 }
 
+export interface SaveAssessmentResult {
+  assessId: string
+  reportToken: string
+}
+
 export async function saveAssessment(
   registration: RegistrationData,
   result: HealthMapResult,
   pillarAnswers?: PillarAnswers
-): Promise<string | null> {
+): Promise<SaveAssessmentResult | null> {
   try {
     const flatAnswers = pillarAnswers ? flattenPillarAnswers(pillarAnswers) : []
     const response = await fetch('/api/save-assessment', {
@@ -41,7 +46,7 @@ export async function saveAssessment(
       console.error('Erro ao salvar:', data.error)
       return null
     }
-    return String(data.assessId)
+    return { assessId: String(data.assessId), reportToken: String(data.reportToken) }
   } catch (error) {
     console.error('Erro ao salvar assessment:', error)
     return null
