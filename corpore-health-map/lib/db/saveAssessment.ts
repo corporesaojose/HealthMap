@@ -1,4 +1,4 @@
-import type { RegistrationData, HealthMapResult, PillarAnswers } from '@/lib/health-map/types'
+import type { RegistrationData, HealthMapResult, PillarAnswers, IpmAnswers } from '@/lib/health-map/types'
 import { PILLARS } from '@/lib/health-map/questions'
 
 function flattenPillarAnswers(pillarAnswers: PillarAnswers) {
@@ -32,14 +32,15 @@ export interface SaveAssessmentResult {
 export async function saveAssessment(
   registration: RegistrationData,
   result: HealthMapResult,
-  pillarAnswers?: PillarAnswers
+  pillarAnswers?: PillarAnswers,
+  ipm?: Partial<IpmAnswers>
 ): Promise<SaveAssessmentResult | null> {
   try {
     const flatAnswers = pillarAnswers ? flattenPillarAnswers(pillarAnswers) : []
     const response = await fetch('/api/save-assessment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ registration, result, pillarAnswers: flatAnswers }),
+      body: JSON.stringify({ registration, result, pillarAnswers: flatAnswers, ipm }),
     })
     const data = await response.json()
     if (!data.success) {

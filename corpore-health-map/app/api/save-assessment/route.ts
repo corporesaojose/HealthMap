@@ -2,6 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import mysql from 'mysql2/promise'
 import { randomUUID } from 'crypto'
 import { pool } from '@/lib/db/pool'
+import { IPM_OBSTACLES } from '@/lib/health-map/questions'
+
+function obstacleLabels(values: string[] | undefined): string | null {
+  if (!values || values.length === 0) return null
+  return values
+    .map(v => IPM_OBSTACLES.find(o => o.value === v)?.label ?? v)
+    .join(', ')
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function POST(req: NextRequest) {
@@ -13,7 +21,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { registration, result, pillarAnswers } = body
+  const { registration, result, pillarAnswers, ipm } = body
 
   let conn: mysql.PoolConnection
   try {
@@ -32,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     const reportToken = randomUUID()
 
-    const insertSql = 'INSERT INTO assessments (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class, profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age, report_token) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    const insertSql = 'INSERT INTO assessments (lead_id, health_score, health_score_class, ipm, ipm_class, imc, imc_class, profile_id, profile_name, pillar_scores, strongest_pillar, weakest_pillar, priority_pillar, age, report_token, ipm_readiness, ipm_confidence, ipm_obstacles, ipm_future, ipm_mental_fatigue) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     const [assessResult] = await conn.execute(insertSql, [
       leadId,
       result.healthScore,
@@ -49,6 +57,11 @@ export async function POST(req: NextRequest) {
       result.priorityPillar.name,
       result.age,
       reportToken,
+      ipm?.readiness ?? null,
+      ipm?.confidence ?? null,
+      obstacleLabels(ipm?.obstacles),
+      ipm?.future ?? null,
+      ipm?.mentalFatigue ?? null,
     ])
     const assessId = (assessResult as mysql.ResultSetHeader).insertId
 

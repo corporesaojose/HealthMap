@@ -109,7 +109,7 @@ export default function HealthMapPage() {
 
   async function handleRegistrationNext() {
     if (result) {
-      const saved = await saveAssessment(formState.registration, result, formState.pillarAnswers)
+      const saved = await saveAssessment(formState.registration, result, formState.pillarAnswers, formState.ipm)
       if (saved) {
         const eventId = crypto.randomUUID()
         trackLead(eventId)
