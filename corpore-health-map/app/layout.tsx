@@ -120,7 +120,7 @@ export default function RootLayout({
                     fbc: fbc
                   })
                 }).catch(function() {});
-              }, 1200);
+              }, 2500);
             }
           `}
         </Script>
