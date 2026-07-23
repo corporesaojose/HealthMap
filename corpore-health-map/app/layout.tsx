@@ -107,6 +107,14 @@ export default function RootLayout({
               setTimeout(function() {
                 var fbp = (document.cookie.match(/(?:^|; )_fbp=([^;]+)/) || [])[1] || null;
                 var fbc = (document.cookie.match(/(?:^|; )_fbc=([^;]+)/) || [])[1] || null;
+                var extId = null;
+                try {
+                  extId = localStorage.getItem('_meta_eid');
+                  if (!extId) {
+                    extId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ('eid_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9));
+                    localStorage.setItem('_meta_eid', extId);
+                  }
+                } catch(e) {}
                 fetch('${N8N_WEBHOOK_URL}', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
@@ -117,7 +125,8 @@ export default function RootLayout({
                     page_url: window.location.href,
                     client_user_agent: navigator.userAgent,
                     fbp: fbp,
-                    fbc: fbc
+                    fbc: fbc,
+                    external_id: extId
                   })
                 }).catch(function() {});
               }, 2500);

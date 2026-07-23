@@ -9,6 +9,19 @@ function getCookie(name: string): string | null {
   return document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]+)`))?.[1] ?? null
 }
 
+function getOrCreateExternalId(): string | null {
+  try {
+    let eid = localStorage.getItem('_meta_eid')
+    if (!eid) {
+      eid = crypto.randomUUID ? crypto.randomUUID() : ('eid_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9))
+      localStorage.setItem('_meta_eid', eid)
+    }
+    return eid
+  } catch {
+    return null
+  }
+}
+
 interface SendMetaCapiEventParams {
   eventName: string
   eventId: string
@@ -35,6 +48,7 @@ export function sendEventToMetaCapi({ eventName, eventId, registration }: SendMe
       client_user_agent: navigator.userAgent,
       fbp: getCookie('_fbp'),
       fbc: getCookie('_fbc'),
+      external_id: getOrCreateExternalId(),
     }),
   }).catch(error => console.error(`Erro ao enviar ${eventName} para o Meta CAPI:`, error))
 }
