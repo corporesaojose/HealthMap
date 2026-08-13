@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { pool } from '@/lib/db/pool'
+import { getPool } from '@/lib/db/pool'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function POST(req: NextRequest) {
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const [result] = await pool.execute(
+    const [result] = await getPool().execute(
       'UPDATE assessments SET report_content = ?, report_generated_at = NOW() WHERE id = ?',
       [JSON.stringify(pillars), assessId]
     )
