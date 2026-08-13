@@ -1,15 +1,29 @@
 import mysql from 'mysql2/promise'
 import { readFileSync } from 'fs'
 
-function getEnvVar(key: string): string | undefined {
-  if (process.env[key]) return process.env[key]
+const CONFIG_ENV_PATH = '/home/u446706325/domains/healthmap.corporetraininggym.com.br/hbuilds/config/.env'
+
+function loadFileEnv(): Record<string, string> {
   try {
-    const raw = readFileSync('/proc/self/environ', 'utf8')
-    const match = raw.split('\0').find(v => v.startsWith(key + '='))
-    return match ? match.slice(key.length + 1) : undefined
+    const raw = readFileSync(CONFIG_ENV_PATH, 'utf8')
+    const out: Record<string, string> = {}
+    for (const line of raw.split('\n')) {
+      const idx = line.indexOf('=')
+      if (idx === -1) continue
+      const key = line.slice(0, idx).trim()
+      const value = line.slice(idx + 1).trim()
+      if (key) out[key] = value
+    }
+    return out
   } catch {
-    return undefined
+    return {}
   }
+}
+
+const fileEnv = loadFileEnv()
+
+function getEnvVar(key: string): string | undefined {
+  return process.env[key] || fileEnv[key] || undefined
 }
 
 let _pool: mysql.Pool | null = null
