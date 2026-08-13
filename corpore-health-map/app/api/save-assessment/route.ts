@@ -31,12 +31,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: false,
       error: 'DB connection failed: ' + String(error),
-      debug: {
-        DB_HOST: process.env.DB_HOST ? `set(${process.env.DB_HOST.length})` : 'MISSING',
-        DB_PORT: process.env.DB_PORT ?? 'MISSING',
-        DB_USER: process.env.DB_USER ? `set(${process.env.DB_USER.length})` : 'MISSING',
-        DB_PASSWORD: process.env.DB_PASSWORD ? `set(${process.env.DB_PASSWORD.length})` : 'MISSING',
-        DB_NAME: process.env.DB_NAME ? `set(${process.env.DB_NAME.length})` : 'MISSING',
+            debug: {
+        a: process.env.DB_HOST ? `y${process.env.DB_HOST.length}` : 'n',
+        b: process.env.DB_PORT ?? 'n',
+        c: process.env.DB_USER ? `y${process.env.DB_USER.length}` : 'n',
+        d: process.env.DB_PASSWORD ? `y${process.env.DB_PASSWORD.length}` : 'n',
+        e: process.env.DB_NAME ? `y${process.env.DB_NAME.length}` : 'n',
       },
     }, { status: 500 })
   }
