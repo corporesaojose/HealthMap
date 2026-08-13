@@ -1,11 +1,21 @@
 import mysql from 'mysql2/promise'
 import { readFileSync } from 'fs'
+import path from 'path'
 
 const CONFIG_ENV_PATH = '/home/u446706325/domains/healthmap.corporetraininggym.com.br/hbuilds/config/.env'
 
 function loadFileEnv(): Record<string, string> {
   try {
+    console.error('[DIAG] cwd =', process.cwd())
+    console.error('[DIAG] __dirname =', __dirname)
+    try {
+      const pkg = readFileSync(path.join(process.cwd(), 'package.json'), 'utf8')
+      console.error('[DIAG] in-dir read OK, package.json length =', pkg.length)
+    } catch (e) {
+      console.error('[DIAG] in-dir read FAILED:', String(e))
+    }
     const raw = readFileSync(CONFIG_ENV_PATH, 'utf8')
+    console.error('[DIAG] out-of-dir read OK, length =', raw.length)
     const out: Record<string, string> = {}
     for (const line of raw.split('\n')) {
       const idx = line.indexOf('=')
@@ -15,7 +25,8 @@ function loadFileEnv(): Record<string, string> {
       if (key) out[key] = value
     }
     return out
-  } catch {
+  } catch (e) {
+    console.error('[DIAG] out-of-dir read FAILED:', String(e))
     return {}
   }
 }
@@ -23,7 +34,9 @@ function loadFileEnv(): Record<string, string> {
 const fileEnv = loadFileEnv()
 
 function getEnvVar(key: string): string | undefined {
-  return process.env[key] || fileEnv[key] || undefined
+  const v = process.env[key] || fileEnv[key] || undefined
+  console.error(`[DIAG] getEnvVar(${key}) => ${v ? 'set(' + v.length + ')' : 'MISSING'}`)
+  return v
 }
 
 let _pool: mysql.Pool | null = null
