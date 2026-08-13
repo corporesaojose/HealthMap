@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import mysql from 'mysql2/promise'
 import { randomUUID } from 'crypto'
-import { pool } from '@/lib/db/pool'
+import { getPool } from '@/lib/db/pool'
 import { IPM_OBSTACLES } from '@/lib/health-map/questions'
 
 function obstacleLabels(values: string[] | undefined): string | null {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
   let conn: mysql.PoolConnection
   try {
-    conn = await pool.getConnection()
+    conn = await getPool().getConnection()
   } catch (error) {
     console.error('DB connection error:', error)
     return NextResponse.json({ success: false, error: 'DB connection failed: ' + String(error) }, { status: 500 })
