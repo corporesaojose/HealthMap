@@ -28,7 +28,17 @@ export async function POST(req: NextRequest) {
     conn = await getPool().getConnection()
   } catch (error) {
     console.error('DB connection error:', error)
-    return NextResponse.json({ success: false, error: 'DB connection failed: ' + String(error) }, { status: 500 })
+    return NextResponse.json({
+      success: false,
+      error: 'DB connection failed: ' + String(error),
+      debug: {
+        DB_HOST: process.env.DB_HOST ? `set(${process.env.DB_HOST.length})` : 'MISSING',
+        DB_PORT: process.env.DB_PORT ?? 'MISSING',
+        DB_USER: process.env.DB_USER ? `set(${process.env.DB_USER.length})` : 'MISSING',
+        DB_PASSWORD: process.env.DB_PASSWORD ? `set(${process.env.DB_PASSWORD.length})` : 'MISSING',
+        DB_NAME: process.env.DB_NAME ? `set(${process.env.DB_NAME.length})` : 'MISSING',
+      },
+    }, { status: 500 })
   }
 
   try {
