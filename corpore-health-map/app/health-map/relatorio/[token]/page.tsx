@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { RowDataPacket } from 'mysql2'
-import { pool } from '@/lib/db/pool'
+import { getPool } from '@/lib/db/pool'
 import RelatorioClient from './RelatorioClient'
 
 export const dynamic = 'force-dynamic'
@@ -25,7 +25,7 @@ const WHATSAPP_MESSAGE =
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
 async function getReport(token: string) {
-  const [rows] = await pool.execute<AssessmentRow[]>(
+  const [rows] = await getPool().execute<AssessmentRow[]>(
     `SELECT a.id, a.health_score, a.health_score_class, a.profile_name, a.pillar_scores, a.report_content, l.name AS lead_name
      FROM assessments a
      JOIN leads l ON l.id = a.lead_id
