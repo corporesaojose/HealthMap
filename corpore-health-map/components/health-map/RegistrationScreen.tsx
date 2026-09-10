@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ActivityLevel, RegistrationData } from '@/lib/health-map/types'
+import { formatPhone, validateMobilePhone } from '@/lib/health-map/phone'
 
 interface RegistrationScreenProps {
   data: RegistrationData
@@ -17,16 +18,18 @@ const ACTIVITY_OPTIONS: { value: ActivityLevel; label: string; emoji: string }[]
   { value: 'pilates_crossfit_spinning_bootcamp', label: 'Faço Pilates, Crossfit, Spinning, Bootcamp e similares', emoji: '🤸' },
 ]
 
-function formatPhone(value: string) {
-  const digits = value.replace(/\D/g, '').slice(0, 11)
-  if (digits.length <= 2) return digits
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
-}
-
 export default function RegistrationScreen({ data, onChange, onNext }: RegistrationScreenProps) {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
+  const [confirmingPhone, setConfirmingPhone] = useState(false)
+
+  // Com o modal aberto, rolar o fundo deixa a pagina exposta atras do overlay
+  useEffect(() => {
+    if (!confirmingPhone) return
+    const anterior = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = anterior }
+  }, [confirmingPhone])
 
   function update(field: keyof RegistrationData, value: string | ActivityLevel | null) {
     onChange({ ...data, [field]: value })
@@ -36,8 +39,8 @@ export default function RegistrationScreen({ data, onChange, onNext }: Registrat
   function validate() {
     const e: Record<string, string> = {}
     if (!data.name || data.name.trim().length < 3) e.name = 'Informe seu nome completo'
-    const phoneDigits = data.phone.replace(/\D/g, '')
-    if (phoneDigits.length < 10) e.phone = 'Informe um telefone válido'
+    const phone = validateMobilePhone(data.phone)
+    if (!phone.ok) e.phone = phone.error as string
     if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) e.email = 'Informe um e-mail válido'
     if (!data.neighborhood || data.neighborhood.trim().length < 2) e.neighborhood = 'Informe seu bairro'
     if (!data.activityLevel) e.activityLevel = 'Selecione uma opção'
@@ -45,8 +48,16 @@ export default function RegistrationScreen({ data, onChange, onNext }: Registrat
     return Object.keys(e).length === 0
   }
 
+  // O relatorio vai por WhatsApp para o numero digitado, entao pedimos uma
+  // conferencia explicita antes de seguir — errar um digito aqui significa
+  // lead que nunca recebe o resultado.
   function handleNext() {
     if (!validate()) return
+    setConfirmingPhone(true)
+  }
+
+  function confirmarEnviar() {
+    setConfirmingPhone(false)
     setLoading(true)
     onNext()
   }
@@ -118,7 +129,9 @@ export default function RegistrationScreen({ data, onChange, onNext }: Registrat
               borderColor: errors.phone ? '#ff6b6b' : 'rgba(255,255,255,0.15)',
             }}
           />
-          {errors.phone && <p className="text-xs" style={{ color: '#ff6b6b' }}>{errors.phone}</p>}
+          {errors.phone
+            ? <p className="text-xs" style={{ color: '#ff6b6b' }}>{errors.phone}</p>
+            : <p className="text-xs font-inter" style={{ color: 'rgba(255,255,255,0.4)' }}>Seu Mapa de Saúde chega neste número 💬</p>}
         </div>
 
         {/* Email */}
@@ -198,6 +211,73 @@ export default function RegistrationScreen({ data, onChange, onNext }: Registrat
           Seus dados são confidenciais e usados apenas para personalizar seu acompanhamento.
         </p>
       </div>
+
+      {/* Confirmacao do WhatsApp antes de gerar o resultado */}
+      {confirmingPhone && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="confirma-whatsapp-titulo"
+          className="fixed inset-0 z-50 flex items-center justify-center px-6"
+          style={{ background: 'rgba(6,24,24,0.82)', backdropFilter: 'blur(4px)' }}
+        >
+          <div
+            className="w-full max-w-sm flex flex-col gap-5 p-6 text-center"
+            style={{
+              background: 'linear-gradient(160deg, #123636 0%, #164646 100%)',
+              border: '1px solid rgba(215,233,74,0.25)',
+              borderRadius: '1.25rem',
+              boxShadow: '0 24px 64px rgba(0,0,0,0.45)',
+            }}
+          >
+            <div>
+              <span className="text-3xl">💬</span>
+              <h3
+                id="confirma-whatsapp-titulo"
+                className="mt-2 font-sora font-bold text-white"
+                style={{ fontSize: '1.15rem', letterSpacing: '-0.01em' }}
+              >
+                Esse WhatsApp está certo?
+              </h3>
+              <p className="mt-1 font-inter text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                É para este número que enviaremos seu Mapa de Saúde completo.
+              </p>
+            </div>
+
+            <div
+              className="font-sora font-bold"
+              style={{
+                background: 'rgba(215,233,74,0.12)',
+                border: '1px solid rgba(215,233,74,0.35)',
+                borderRadius: '0.75rem',
+                color: '#D7E94A',
+                fontSize: '1.4rem',
+                letterSpacing: '0.02em',
+                padding: '14px 12px',
+              }}
+            >
+              {formatPhone(data.phone)}
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={confirmarEnviar}
+                className="w-full font-sora font-bold text-petroleum rounded-full py-3.5 px-6 transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+                style={{ background: '#D7E94A', boxShadow: '0 12px 32px rgba(215,233,74,0.3)', fontSize: '0.95rem' }}
+              >
+                Sim, está correto →
+              </button>
+              <button
+                onClick={() => setConfirmingPhone(false)}
+                className="w-full font-inter rounded-full py-3 px-6 transition-all duration-200 hover:bg-white/5"
+                style={{ border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.75)', fontSize: '0.9rem' }}
+              >
+                Corrigir número
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
