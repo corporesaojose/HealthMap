@@ -52,18 +52,6 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
           </span>
         </div>
 
-        {/* Radar vazio pulsante */}
-        <div
-          className="w-full max-w-[340px] mx-auto"
-          style={{
-            opacity: radarPulse ? 1 : 0,
-            transform: radarPulse ? 'scale(1)' : 'scale(0.9)',
-            transition: 'opacity 0.6s ease, transform 0.6s ease',
-          }}
-        >
-          <RadarChart slices={[]} size={220} empty animated responsive />
-        </div>
-
         {/* Headline */}
         <div className="flex flex-col gap-4">
           <h1
@@ -77,6 +65,36 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
             Em menos de 3 minutos vamos mapear sua saúde e revelar seu{' '}
             <strong className="text-white">Health Score</strong>.
           </p>
+        </div>
+
+        {/* CTA na primeira tela do celular, antes do radar (lp-conversao, ajuste 2a, 23/09/2026) */}
+        <button
+          onClick={onStart}
+          className="w-full font-sora font-bold text-petroleum rounded-full py-4 px-8 transition-all duration-200 hover:-translate-y-1 active:scale-95"
+          style={{
+            background: '#D7E94A',
+            boxShadow: '0 12px 32px rgba(215,233,74,0.35)',
+            fontSize: '1rem',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          🚀 Começar Meu Health Map
+        </button>
+
+        <p className="text-xs font-inter" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          Gratuito • 100% online • Resultado personalizado
+        </p>
+
+        {/* Radar vazio pulsante */}
+        <div
+          className="w-full max-w-[340px] mx-auto"
+          style={{
+            opacity: radarPulse ? 1 : 0,
+            transform: radarPulse ? 'scale(1)' : 'scale(0.9)',
+            transition: 'opacity 0.6s ease, transform 0.6s ease',
+          }}
+        >
+          <RadarChart slices={[]} size={220} empty animated responsive />
         </div>
 
         {/* Pilares */}
@@ -99,24 +117,6 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
             </div>
           ))}
         </div>
-
-        {/* CTA */}
-        <button
-          onClick={onStart}
-          className="w-full font-sora font-bold text-petroleum rounded-full py-4 px-8 transition-all duration-200 hover:-translate-y-1 active:scale-95"
-          style={{
-            background: '#D7E94A',
-            boxShadow: '0 12px 32px rgba(215,233,74,0.35)',
-            fontSize: '1rem',
-            letterSpacing: '-0.01em',
-          }}
-        >
-          🚀 Começar Meu Health Map
-        </button>
-
-        <p className="text-xs font-inter" style={{ color: 'rgba(255,255,255,0.35)' }}>
-          Gratuito • 100% online • Resultado personalizado
-        </p>
       </div>
     </div>
   )
