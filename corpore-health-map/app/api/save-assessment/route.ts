@@ -28,17 +28,7 @@ export async function POST(req: NextRequest) {
     conn = await getPool().getConnection()
   } catch (error) {
     console.error('DB connection error:', error)
-    return NextResponse.json({
-      success: false,
-      error: 'DB connection failed: ' + String(error),
-            debug: {
-        a: process.env.DB_HOST ? `y${process.env.DB_HOST.length}` : 'n',
-        b: process.env.DB_PORT ?? 'n',
-        c: process.env.DB_USER ? `y${process.env.DB_USER.length}` : 'n',
-        d: process.env.DB_PASSWORD ? `y${process.env.DB_PASSWORD.length}` : 'n',
-        e: process.env.DB_NAME ? `y${process.env.DB_NAME.length}` : 'n',
-      },
-    }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'DB connection failed' }, { status: 500 })
   }
 
   try {
@@ -88,7 +78,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true, leadId, assessId, reportToken })
   } catch (error) {
     console.error('DB query error:', error)
-    return NextResponse.json({ success: false, error: String(error) }, { status: 500 })
+    return NextResponse.json({ success: false, error: 'DB query failed' }, { status: 500 })
   } finally {
     conn.release()
   }
